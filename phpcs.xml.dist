@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<ruleset name="DE WordPress Plugin Utils Coding Standards">
+	<description>Coding standards for the DE WordPress Plugin Utils library.</description>
+
+	<!-- What to scan -->
+	<arg name="extensions" value="php"/>
+
+	<exclude-pattern>*/tests/*</exclude-pattern>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>/node_modules/*</exclude-pattern>
+
+	<config name="testVersion" value="8.2-"/>
+
+	<!-- Rules: Check PHP version compatibility -->
+	<rule ref="PHPCompatibilityWP"/>
+
+	<!-- Rules: WordPress Coding Standards -->
+	<config name="minimum_supported_wp_version" value="6.4"/>
+
+	<rule ref="WordPress-Docs"/>
+	<rule ref="WordPress-Core">
+		<exclude name="Squiz.Commenting.FileComment.MissingPackageTag"/>
+		<exclude name="Squiz.Commenting.FunctionComment.SpacingAfterParamType"/>
+		<exclude name="Squiz.PHP.DisallowMultipleAssignments.FoundInControlStructure"/>
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+		<exclude name="WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedNamespaceFound"/>
+		<exclude name="WordPress.WP.I18n.TextDomainMismatch"/>
+		<exclude name="WordPress.WP.I18n.MissingTranslatorsComment"/>
+		<exclude name="WordPress.WP.I18n.NonSingularStringLiteralDomain"/>
+		<exclude name="WordPress.PHP.DisallowShortTernary.Found"/>
+		<exclude name="WordPress.DB.DirectDatabaseQuery.DirectQuery"/>
+		<exclude name="WordPress.DB.DirectDatabaseQuery.NoCaching"/>
+		<exclude name="WordPress.DB.PreparedSQLPlaceholders.UnsupportedIdentifierPlaceholder"/>
+		<exclude name="WordPress.DB.PreparedSQLPlaceholders.UnsupportedPlaceholder"/>
+		<exclude name="Generic.Functions.CallTimePassByReference"/>
+		<exclude name="Squiz.WhiteSpace.LanguageConstructSpacing"/>
+	</rule>
+	<rule ref="Generic.WhiteSpace.LanguageConstructSpacing"/>
+	<rule ref="WordPress-Extra"/>
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="de_wpu"/>
+				<element value="Dream_Encode"/>
+				<element value="DE_WordPress_Plugin_Utils"/>
+			</property>
+		</properties>
+	</rule>
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="de-wordpress-plugin-utils"/>
+			</property>
+		</properties>
+	</rule>
+	<rule ref="WordPress.WhiteSpace.ControlStructureSpacing">
+		<properties>
+			<property name="blank_line_check" value="true"/>
+		</properties>
+	</rule>
+</ruleset>
+
