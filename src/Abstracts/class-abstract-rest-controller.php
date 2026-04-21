@@ -7,6 +7,7 @@
 
 namespace Dream_Encode\WordPress_Plugin_Utils\Abstracts;
 
+use WP_Error;
 use WP_REST_Controller;
 use WP_REST_Response;
 
@@ -74,9 +75,9 @@ abstract class Abstract_REST_Controller extends WP_REST_Controller {
 	 *
 	 * @since 1.0.0
 	 * @param mixed $data Current response data.
-	 * @return WP_REST_Response
+	 * @return WP_Error|WP_REST_Response
 	 */
-	public function ensure_response( mixed $data ): WP_REST_Response {
+	public function ensure_response( mixed $data ): WP_Error|WP_REST_Response {
 		return rest_ensure_response( $data );
 	}
 

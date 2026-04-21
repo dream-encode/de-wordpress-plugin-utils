@@ -237,7 +237,7 @@ abstract class Abstract_Plugin_Upgrader {
 			return;
 		}
 
-		if ( static::is_installing() ) {
+		if ( self::is_installing() ) {
 			return;
 		}
 
@@ -259,9 +259,9 @@ abstract class Abstract_Plugin_Upgrader {
 
 		static::create_default_options();
 
-		static::update_plugin_version();
+		self::update_plugin_version();
 
-		static::maybe_update_db_version();
+		self::maybe_update_db_version();
 
 		delete_transient( "{$prefix}_installing" );
 
@@ -355,7 +355,7 @@ abstract class Abstract_Plugin_Upgrader {
 				);
 			}
 
-			static::update();
+				self::update();
 		} else {
 			static::update_db_version();
 		}

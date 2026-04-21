@@ -1,4 +1,5 @@
 parameters:
+    tmpDir: .phpstan
     level: 8
     treatPhpDocTypesAsCertain: false
     checkMissingIterableValueType: false
@@ -11,8 +12,7 @@ parameters:
         - src
     excludePaths:
         - vendor/*
-    bootstrapFiles:
-        - vendor/php-stubs/wordpress-stubs/wordpress-stubs.php
+    scanFiles:
         - vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
         - vendor/php-stubs/woocommerce-stubs/woocommerce-packages-stubs.php
 

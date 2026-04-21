@@ -78,19 +78,15 @@ abstract class Abstract_WC_Logger {
 			return;
 		}
 
-		static $loggable_log_levels = false;
+		$level_index = array_search( $log_level_setting, static::$log_levels, true );
 
-		if ( false === $loggable_log_levels ) {
-			$level_index = array_search( $log_level_setting, static::$log_levels, true );
-
-			if ( false === $level_index ) {
-				return;
-			}
-
-			$loggable_log_levels = array_slice( static::$log_levels, 0, intval( $level_index ) + 1 );
+		if ( false === $level_index ) {
+			return;
 		}
 
-		if ( ! is_array( $loggable_log_levels ) || ! in_array( $level, $loggable_log_levels, true ) ) {
+		$loggable_log_levels = array_slice( static::$log_levels, 0, intval( $level_index ) + 1 );
+
+		if ( ! in_array( $level, $loggable_log_levels, true ) ) {
 			return;
 		}
 
@@ -100,7 +96,7 @@ abstract class Abstract_WC_Logger {
 
 		if ( function_exists( 'wc_get_logger' ) ) {
 			$logger = wc_get_logger();
-			$logger->{$level}( $data, array( 'source' => static::$namespace ) );
+			$logger->log( $level, (string) $data, array( 'source' => static::$namespace ) );
 		} else {
 			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
 			error_log(
