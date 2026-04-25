@@ -1,5 +1,8 @@
 # Changelog
 
+## [NEXT_VERSION] - [UNRELEASED]
+* BUG: Example fix description.
+
 ## [1.1.1] - 2026-04-25
 * BUG: Fix fatal caused by release script sed.
 
