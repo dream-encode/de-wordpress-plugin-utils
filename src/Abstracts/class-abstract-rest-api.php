@@ -108,4 +108,3 @@ abstract class Abstract_REST_API {
 		$this->controllers = $controllers;
 	}
 }
-

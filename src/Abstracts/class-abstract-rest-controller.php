@@ -97,4 +97,3 @@ abstract class Abstract_REST_Controller extends WP_REST_Controller {
 	 */
 	abstract public function check_user_permission(): bool;
 }
-

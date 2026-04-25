@@ -198,4 +198,3 @@ abstract class Abstract_WC_Logger {
 		static::log( $data, 'debug' );
 	}
 }
-

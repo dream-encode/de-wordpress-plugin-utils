@@ -1,5 +1,4 @@
 parameters:
-    tmpDir: .phpstan
     level: 8
     treatPhpDocTypesAsCertain: false
     checkMissingIterableValueType: false

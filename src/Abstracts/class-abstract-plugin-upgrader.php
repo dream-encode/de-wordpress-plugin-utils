@@ -546,4 +546,3 @@ abstract class Abstract_Plugin_Upgrader {
 		}
 	}
 }
-
