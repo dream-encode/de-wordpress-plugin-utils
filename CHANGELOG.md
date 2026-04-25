@@ -1,6 +1,6 @@
 # Changelog
 
-## [NEXT_VERSION] - [UNRELEASED]
+## [1.1.0] - 2026-04-25
 * ENH: Add `Abstract_Plugin` - main plugin bootstrap template using the Template Method pattern.
 * ENH: Add `Abstract_Plugin_Loader` - stores and bulk-registers WordPress actions and filters.
 * ENH: Add `Abstract_Plugin_Activator` and `Abstract_Plugin_Deactivator` - consistent lifecycle hook entry points.
