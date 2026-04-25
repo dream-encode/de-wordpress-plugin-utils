@@ -8,7 +8,6 @@
 namespace Dream_Encode\WordPress_Plugin_Utils\Tests\Fixtures;
 
 use Dream_Encode\WordPress_Plugin_Utils\Abstracts\Abstract_Plugin;
-use Dream_Encode\WordPress_Plugin_Utils\Abstracts\Abstract_Plugin_Loader;
 
 /**
  * Concrete implementation of Abstract_Plugin for testing.
@@ -53,10 +52,6 @@ class Test_Plugin extends Abstract_Plugin {
 
 	protected function get_default_version(): string {
 		return $this->default_version;
-	}
-
-	protected function create_loader(): Abstract_Plugin_Loader {
-		return new Test_Plugin_Loader();
 	}
 
 	protected function load_dependencies(): void {

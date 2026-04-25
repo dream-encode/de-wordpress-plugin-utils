@@ -7,12 +7,12 @@
 
 namespace Dream_Encode\WordPress_Plugin_Utils\Tests\Fixtures;
 
-use Dream_Encode\WordPress_Plugin_Utils\Abstracts\Abstract_Plugin_Loader;
+use Dream_Encode\WordPress_Plugin_Utils\Loader\Plugin_Loader;
 
 /**
- * Concrete implementation of Abstract_Plugin_Loader for testing.
+ * Concrete extension of Plugin_Loader for testing.
  */
-class Test_Plugin_Loader extends Abstract_Plugin_Loader {
+class Test_Plugin_Loader extends Plugin_Loader {
 }
 
 /**

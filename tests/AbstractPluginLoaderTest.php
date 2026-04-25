@@ -1,6 +1,6 @@
 <?php
 /**
- * Tests for Abstract_Plugin_Loader.
+ * Tests for Plugin_Loader.
  *
  * @package Dream_Encode\WordPress_Plugin_Utils
  */
@@ -12,7 +12,7 @@ use Dream_Encode\WordPress_Plugin_Utils\Tests\Fixtures\Test_Plugin_Loader_Compon
 use WP_UnitTestCase;
 
 /**
- * Test case for Abstract_Plugin_Loader.
+ * Test case for Plugin_Loader.
  */
 class AbstractPluginLoaderTest extends WP_UnitTestCase {
 

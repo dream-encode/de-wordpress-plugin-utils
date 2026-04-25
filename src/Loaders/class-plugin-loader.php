@@ -1,23 +1,23 @@
 <?php
 /**
- * Abstract plugin loader.
+ * Plugin loader.
  *
- * @package Dream_Encode\WordPress_Plugin_Utils\Abstracts
+ * @package Dream_Encode\WordPress_Plugin_Utils\Loaders
  * @since   1.0.0
  */
 
-namespace Dream_Encode\WordPress_Plugin_Utils\Abstracts;
+namespace Dream_Encode\WordPress_Plugin_Utils\Loader;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Abstract plugin loader.
+ * Plugin loader.
  *
  * Stores and registers WordPress hooks.
  *
  * @since 1.0.0
  */
-abstract class Abstract_Plugin_Loader {
+class Plugin_Loader {
 
 	/**
 	 * Registered actions.

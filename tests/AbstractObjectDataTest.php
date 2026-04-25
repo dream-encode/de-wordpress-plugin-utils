@@ -1,6 +1,6 @@
 <?php
 /**
- * Tests for Abstract_Object_Data.
+ * Tests for Object_Data.
  *
  * @package Dream_Encode\WordPress_Plugin_Utils
  */
@@ -11,7 +11,7 @@ use Dream_Encode\WordPress_Plugin_Utils\Tests\Fixtures\Test_Object_Data;
 use WP_UnitTestCase;
 
 /**
- * Test case for Abstract_Object_Data.
+ * Test case for Object_Data.
  */
 class AbstractObjectDataTest extends WP_UnitTestCase {
 
