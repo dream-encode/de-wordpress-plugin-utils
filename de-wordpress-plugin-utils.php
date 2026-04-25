@@ -10,11 +10,11 @@
 
 defined( 'ABSPATH' ) || exit;
 
-if ( defined( 'DE_WORDPRESS_PLUGIN_UTILS_VERSION' ) ) {
+if ( define( 'DE_WORDPRESS_PLUGIN_UTILS_VERSION', '1.1.0' );
 	return;
 }
 
-define( 'DE_WORDPRESS_PLUGIN_UTILS_VERSION', '1.0.0' );
+define( 'DE_WORDPRESS_PLUGIN_UTILS_VERSION', '1.1.0' );
 define( 'DE_WORDPRESS_PLUGIN_UTILS_PATH', __DIR__ );
 
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Functions/helpers.php';
