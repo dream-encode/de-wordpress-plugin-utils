@@ -24,10 +24,10 @@ Main plugin bootstrap template. Constructs the loader, loads dependencies, sets 
 **Must implement:**
 - `get_plugin_slug(): string` — returns the plugin slug used as `$plugin_name`.
 - `get_version_constant(): string` — returns the PHP constant name that holds the plugin version.
-- `create_loader(): Abstract_Plugin_Loader` — returns a concrete loader instance.
 
 **Optional overrides:**
 - `get_default_version(): string` — fallback version string when the constant is not yet defined (default `'1.0.0'`).
+- `create_loader(): Plugin_Loader` — returns the loader instance; defaults to `new Plugin_Loader()`.
 - `load_dependencies(): void` — require additional files/classes.
 - `set_locale(): void` — instantiate and register the i18n loader.
 - `define_admin_hooks(): void` — register wp-admin actions and filters.
@@ -37,14 +37,14 @@ Main plugin bootstrap template. Constructs the loader, loads dependencies, sets 
 - `run(): void` — fires all registered hooks via the loader.
 - `get_plugin_name(): string`
 - `get_version(): string`
-- `get_loader(): Abstract_Plugin_Loader`
+- `get_loader(): Plugin_Loader`
 
 ---
 
-### Abstract_Plugin_Loader
-`Dream_Encode\WordPress_Plugin_Utils\Abstracts\Abstract_Plugin_Loader`
+### Plugin_Loader
+`Dream_Encode\WordPress_Plugin_Utils\Loader\Plugin_Loader`
 
-Stores and bulk-registers WordPress actions and filters.
+Concrete class. Stores and bulk-registers WordPress actions and filters. Can be used directly or subclassed for custom hook-registration behaviour.
 
 **Public API:**
 - `add_action( $hook, $component, $callback, $priority, $accepted_args ): void`
@@ -137,10 +137,10 @@ Extends `WP_REST_Controller` with a reusable pattern for REST endpoint controlle
 
 ---
 
-### Abstract_Object_Data
-`Dream_Encode\WordPress_Plugin_Utils\Abstracts\Abstract_Object_Data`
+### Object_Data
+`Dream_Encode\WordPress_Plugin_Utils\Data\Object_Data`
 
-WooCommerce-style data object base. Tracks a `$data` array, a `$changes` diff, and optional `$extra_data`.
+Concrete class. WooCommerce-style data object. Tracks a `$data` array, a `$changes` diff, and optional `$extra_data`. Can be used directly or subclassed to declare typed `$data`/`$extra_data` defaults and domain-specific getters/setters.
 
 **Public API:**
 - `get_prop( $prop ): mixed` — reads from `$changes` first, then `$data`.

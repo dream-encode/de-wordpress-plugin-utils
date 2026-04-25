@@ -1,23 +1,23 @@
 <?php
 /**
- * Abstract object data container.
+ * Object data container.
  *
- * @package Dream_Encode\WordPress_Plugin_Utils\Abstracts
+ * @package Dream_Encode\WordPress_Plugin_Utils\Data
  * @since   1.0.0
  */
 
-namespace Dream_Encode\WordPress_Plugin_Utils\Abstracts;
+namespace Dream_Encode\WordPress_Plugin_Utils\Data;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Abstract object data container.
+ * Object data container.
  *
  * Provides generic data/change tracking similar to WC_Data.
  *
  * @since 1.0.0
  */
-abstract class Abstract_Object_Data {
+class Object_Data {
 
 	/**
 	 * Data.

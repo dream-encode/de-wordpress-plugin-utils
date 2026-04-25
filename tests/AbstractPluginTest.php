@@ -7,7 +7,7 @@
 
 namespace Dream_Encode\WordPress_Plugin_Utils\Tests;
 
-use Dream_Encode\WordPress_Plugin_Utils\Abstracts\Abstract_Plugin_Loader;
+use Dream_Encode\WordPress_Plugin_Utils\Loader\Plugin_Loader;
 use Dream_Encode\WordPress_Plugin_Utils\Tests\Fixtures\Test_Plugin;
 use WP_UnitTestCase;
 
@@ -67,12 +67,12 @@ class AbstractPluginTest extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Test that get_loader() returns the loader created by the subclass.
+	 * Test that get_loader() returns a Plugin_Loader instance.
 	 */
 	public function test_get_loader_returns_instance_from_create_loader(): void {
 		$plugin = new Test_Plugin();
 
-		$this->assertInstanceOf( Abstract_Plugin_Loader::class, $plugin->get_loader() );
+		$this->assertInstanceOf( Plugin_Loader::class, $plugin->get_loader() );
 	}
 
 	/**

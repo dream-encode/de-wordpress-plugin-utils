@@ -8,6 +8,8 @@
 
 namespace Dream_Encode\WordPress_Plugin_Utils\Abstracts;
 
+use Dream_Encode\WordPress_Plugin_Utils\Loader\Plugin_Loader;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -24,9 +26,9 @@ abstract class Abstract_Plugin {
 	/**
 	 * Hook loader.
 	 *
-	 * @var Abstract_Plugin_Loader
+	 * @var Plugin_Loader
 	 */
-	protected Abstract_Plugin_Loader $loader;
+	protected Plugin_Loader $loader;
 
 	/**
 	 * Plugin slug.
@@ -78,9 +80,11 @@ abstract class Abstract_Plugin {
 	 * Create the hook loader instance.
 	 *
 	 * @since  1.0.0
-	 * @return Abstract_Plugin_Loader
+	 * @return Plugin_Loader
 	 */
-	abstract protected function create_loader(): Abstract_Plugin_Loader;
+	protected function create_loader(): Plugin_Loader {
+		return new Plugin_Loader();
+	}
 
 	/**
 	 * Default plugin version when no constant is defined.
@@ -197,9 +201,9 @@ abstract class Abstract_Plugin {
 	 * Get the hook loader.
 	 *
 	 * @since  1.0.0
-	 * @return Abstract_Plugin_Loader
+	 * @return Plugin_Loader
 	 */
-	public function get_loader(): Abstract_Plugin_Loader {
+	public function get_loader(): Plugin_Loader {
 		return $this->loader;
 	}
 }

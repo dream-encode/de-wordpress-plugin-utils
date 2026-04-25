@@ -7,12 +7,12 @@
 
 namespace Dream_Encode\WordPress_Plugin_Utils\Tests\Fixtures;
 
-use Dream_Encode\WordPress_Plugin_Utils\Abstracts\Abstract_Object_Data;
+use Dream_Encode\WordPress_Plugin_Utils\Data\Object_Data;
 
 /**
- * Concrete implementation of Abstract_Object_Data for testing.
+ * Concrete extension of Object_Data for testing.
  */
-class Test_Object_Data extends Abstract_Object_Data {
+class Test_Object_Data extends Object_Data {
 
 	/** @var array<string, mixed> */
 	protected array $data = array(

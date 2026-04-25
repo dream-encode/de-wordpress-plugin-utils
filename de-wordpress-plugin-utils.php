@@ -18,10 +18,10 @@ define( 'DE_WORDPRESS_PLUGIN_UTILS_VERSION', '1.1.1' );
 define( 'DE_WORDPRESS_PLUGIN_UTILS_PATH', __DIR__ );
 
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Functions/helpers.php';
+require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Loaders/class-plugin-loader.php';
+require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Data/class-object-data.php';
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Abstracts/class-abstract-wc-logger.php';
-require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Abstracts/class-abstract-plugin-loader.php';
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Abstracts/class-abstract-plugin-i18n.php';
-require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Abstracts/class-abstract-object-data.php';
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Abstracts/class-abstract-plugin-upgrader.php';
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Abstracts/class-abstract-plugin-activator.php';
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Abstracts/class-abstract-plugin-deactivator.php';
