@@ -1,6 +1,6 @@
 # Changelog
 
-## [NEXT_VERSION] - [UNRELEASED]
+## [1.2.0] - 2026-04-25
 * ENH: Promote `Abstract_Plugin_Loader` to concrete `Plugin_Loader` (`Loader\Plugin_Loader`) - no abstract methods; usable directly without subclassing.
 * ENH: Promote `Abstract_Object_Data` to concrete `Object_Data` (`Data\Object_Data`) - no abstract methods; usable directly or extended for domain-specific data objects.
 * ENH: `Abstract_Plugin::create_loader()` now has a default implementation returning `new Plugin_Loader()`, reducing abstract method count from 3 to 2.
