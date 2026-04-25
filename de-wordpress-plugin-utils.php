@@ -10,7 +10,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-if ( define( 'DE_WORDPRESS_PLUGIN_UTILS_VERSION', '1.1.0' );
+if ( defined( 'DE_WORDPRESS_PLUGIN_UTILS_VERSION' ) ) {
 	return;
 }
 
