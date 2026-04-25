@@ -44,7 +44,11 @@
 		"lint": "./vendor/bin/phpcs -nps --colors --report-code --report-summary --report-width=80 --cache .",
 		"format": "./vendor/bin/phpcbf --standard=phpcs.xml.dist .",
 		"analyze": "./vendor/bin/phpstan",
-		"test": "./vendor/bin/phpunit"
+		"test": [
+			"@lint",
+			"@analyze",
+			"@php ./vendor/bin/phpunit"
+		]
 	},
 	"config": {
 		"allow-plugins": {

@@ -17,8 +17,18 @@ if ( defined( 'DE_WORDPRESS_PLUGIN_UTILS_VERSION' ) ) {
 define( 'DE_WORDPRESS_PLUGIN_UTILS_VERSION', '1.0.0' );
 define( 'DE_WORDPRESS_PLUGIN_UTILS_PATH', __DIR__ );
 
+require_once __DIR__ . '/src/Functions/helpers.php';
 require_once __DIR__ . '/src/Abstracts/class-abstract-wc-logger.php';
+require_once __DIR__ . '/src/Abstracts/class-abstract-plugin-loader.php';
+require_once __DIR__ . '/src/Abstracts/class-abstract-plugin-i18n.php';
+require_once __DIR__ . '/src/Abstracts/class-abstract-object-data.php';
 require_once __DIR__ . '/src/Abstracts/class-abstract-plugin-upgrader.php';
+require_once __DIR__ . '/src/Abstracts/class-abstract-plugin-activator.php';
+require_once __DIR__ . '/src/Abstracts/class-abstract-plugin-deactivator.php';
+require_once __DIR__ . '/src/Abstracts/class-abstract-admin-asset-manager.php';
 require_once __DIR__ . '/src/Abstracts/class-abstract-rest-api.php';
 require_once __DIR__ . '/src/Abstracts/class-abstract-rest-controller.php';
-
+require_once __DIR__ . '/src/Abstracts/class-abstract-plugin.php';
+require_once __DIR__ . '/src/Abstracts/class-abstract-migrator.php';
+require_once __DIR__ . '/src/Abstracts/class-abstract-background-processor.php';
+require_once __DIR__ . '/src/Settings/class-plugin-settings-repository.php';

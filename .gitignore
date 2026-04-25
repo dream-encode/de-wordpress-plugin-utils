@@ -3,3 +3,4 @@
 vendor/
 tests/wp-tests-config.php
 .env
+.augment
