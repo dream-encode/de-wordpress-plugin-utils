@@ -815,11 +815,6 @@ abstract class Abstract_Background_Processor {
 
 		$this->init();
 
-		$this->log_debug( 'Processor: ' . $this->get_processor() );
-		$this->log_debug( 'Prerequisite sub processors: ' . print_r( $this->get_prerequisite_sub_background_processors(), true ) );
-		$this->log_debug( 'Prerequisite sub processes: ' . print_r( $this->get_prerequisite_sub_background_processes(), true ) );
-		$this->log_debug( 'Incomplete prerequisite sub processors: ' . print_r( $this->get_incomplete_prerequisite_sub_background_processors(), true ) );
-
 		$latest_status = $this->get_background_process_option( $this->get_background_processes_id() );
 
 		if ( isset( $latest_status['status'] ) && self::PROCESS_STATUS_CANCELLED === $latest_status['status'] ) {
@@ -1442,7 +1437,6 @@ abstract class Abstract_Background_Processor {
 	public function get_background_processes_run_id() {
 		return $this->background_processes_run_id;
 	}
-
 
 	/**
 	 * Get current action scheduler action ID.

@@ -50,6 +50,6 @@ require_once __DIR__ . '/Fixtures/class-test-admin-asset-manager.php';
 require_once __DIR__ . '/Fixtures/class-test-rest-api.php';
 require_once __DIR__ . '/Fixtures/class-test-rest-controller.php';
 require_once __DIR__ . '/Fixtures/class-test-plugin.php';
-require_once __DIR__ . '/Fixtures/class-test-migrator.php';
+require_once __DIR__ . '/Fixtures/class-test-data-migrator.php';
 require_once __DIR__ . '/Fixtures/class-test-background-processor.php';
 
