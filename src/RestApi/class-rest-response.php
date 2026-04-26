@@ -2,7 +2,7 @@
 /**
  * Class REST_Response.
  *
- * @since [NEXT_VERSION]
+ * @since 1.4.0
  */
 
 namespace Dream_Encode\WordPress_Plugin_Utils\RestApi;
@@ -14,7 +14,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Class REST_Response
  *
- * @since [NEXT_VERSION]
+ * @since 1.4.0
  */
 class REST_Response {
 	/**

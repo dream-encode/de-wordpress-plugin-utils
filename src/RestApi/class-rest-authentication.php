@@ -2,7 +2,7 @@
 /**
  * Class REST_Authentication.
  *
- * @since [NEXT_VERSION]
+ * @since 1.4.0
  */
 
 namespace Dream_Encode\WordPress_Plugin_Utils\RestApi;
@@ -15,13 +15,13 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Class REST_Authentication.
  *
- * @since [NEXT_VERSION]
+ * @since 1.4.0
  */
 class REST_Authentication {
 	/**
 	 * The current nonce.
 	 *
-	 * @since   [NEXT_VERSION]
+	 * @since   1.4.0
 	 * @access  protected
 	 * @var     string   $wp_rest_nonce  The current nonce.
 	 */
@@ -30,7 +30,7 @@ class REST_Authentication {
 	/**
 	 * The current user id.
 	 *
-	 * @since   [NEXT_VERSION]
+	 * @since   1.4.0
 	 * @access  protected
 	 * @var     int   $wp_current_user_id  The current user id.
 	 */
@@ -46,7 +46,7 @@ class REST_Authentication {
 	/**
 	 * Check the cookie for errors.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.4.0
 	 * @param  WP_Error|null|true  $result  Current result.
 	 * @return mixed
 	 */
@@ -71,7 +71,7 @@ class REST_Authentication {
 	 *
 	 * @see https://github.com/woocommerce/woocommerce/issues/16847
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.4.0
 	 * @param  WP_Error|null|bool  $error  Error data.
 	 * @return WP_Error|null|bool
 	 */
@@ -93,7 +93,7 @@ class REST_Authentication {
 	/**
 	 * Authenticate user.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.4.0
 	 * @param  int|false  $user_id  User ID if one has been determined, false otherwise.
 	 * @return int|false
 	 */
@@ -117,7 +117,7 @@ class REST_Authentication {
 	/**
 	 * Check if request is rest api.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.4.0
 	 * @return mixed
 	 */
 	public function authenticate_app_password() {
@@ -140,7 +140,7 @@ class REST_Authentication {
 	/**
 	 * Check if request is rest api.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.4.0
 	 * @return bool
 	 */
 	public function is_rest_api_request() {
@@ -157,7 +157,7 @@ class REST_Authentication {
 	/**
 	 * Get current nonce.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.4.0
 	 * @return string
 	 */
 	public static function get_wp_rest_nonce() {
@@ -167,7 +167,7 @@ class REST_Authentication {
 	/**
 	 * Get the current user id.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.4.0
 	 * @return int
 	 */
 	public static function get_wp_user_id() {
@@ -177,7 +177,7 @@ class REST_Authentication {
 	/**
 	 * Check permission of a user on a post type.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.4.0
 	 * @param  string  $post_type   Post type to check.
 	 * @param  string  $permission  What context.
 	 * @param  int     $user_id     User to validate.
@@ -215,7 +215,7 @@ class REST_Authentication {
 	/**
 	 * Check permission if user is logged in.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.4.0
 	 * @return bool
 	 */
 	public static function check_logged_in_permission() {
@@ -225,7 +225,7 @@ class REST_Authentication {
 	/**
 	 * Check permission if user is administrator.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.4.0
 	 * @return bool
 	 */
 	public static function check_admin_permission() {
@@ -235,7 +235,7 @@ class REST_Authentication {
 	/**
 	 * Check permission if user is editor.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.4.0
 	 * @return bool
 	 */
 	public static function check_editor_permission() {
@@ -245,7 +245,7 @@ class REST_Authentication {
 	/**
 	 * Check permission if user is shop_manager.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.4.0
 	 * @return bool
 	 */
 	public static function check_woocommerce_shop_manager_permission() {
@@ -255,7 +255,7 @@ class REST_Authentication {
 	/**
 	 * Check user can do action.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.4.0
 	 * @return bool
 	 */
 	public static function check_user_permission() {
