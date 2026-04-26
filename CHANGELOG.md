@@ -1,6 +1,6 @@
 # Changelog
 
-## [NEXT_VERSION] - [UNRELEASED]
+## [1.4.0] - 2026-04-25
 * ENH: Add `REST_Authentication` - WP REST API authentication handler with cookie/app-password support and static permission helpers.
 * ENH: Add `REST_Response` - simple value object for REST API responses.
 * BUG: Fix `REST_Authentication::is_rest_api_request()` - `str_contains` arguments were reversed.
