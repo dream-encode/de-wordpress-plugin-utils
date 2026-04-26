@@ -14,7 +14,7 @@ if ( defined( 'DE_WORDPRESS_PLUGIN_UTILS_VERSION' ) ) {
 	return;
 }
 
-define( 'DE_WORDPRESS_PLUGIN_UTILS_VERSION', '1.3.0' );
+define( 'DE_WORDPRESS_PLUGIN_UTILS_VERSION', '1.4.0' );
 define( 'DE_WORDPRESS_PLUGIN_UTILS_PATH', __DIR__ );
 
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Functions/helpers.php';
@@ -31,4 +31,6 @@ require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Abstracts/class-abstract-res
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Abstracts/class-abstract-plugin.php';
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Abstracts/class-abstract-data-migrator.php';
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Abstracts/class-abstract-background-processor.php';
+require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/RestApi/class-rest-authentication.php';
+require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/RestApi/class-rest-response.php';
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Settings/class-plugin-settings-repository.php';
