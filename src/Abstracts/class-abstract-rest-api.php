@@ -5,6 +5,8 @@
  * @since 1.0.0
  */
 
+declare( strict_types = 1 );
+
 namespace Dream_Encode\WordPress_Plugin_Utils\Abstracts;
 
 defined( 'ABSPATH' ) || exit;

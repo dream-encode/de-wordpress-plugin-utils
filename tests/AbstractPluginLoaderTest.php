@@ -5,6 +5,8 @@
  * @package Dream_Encode\WordPress_Plugin_Utils
  */
 
+declare( strict_types = 1 );
+
 namespace Dream_Encode\WordPress_Plugin_Utils\Tests;
 
 use Dream_Encode\WordPress_Plugin_Utils\Tests\Fixtures\Test_Plugin_Loader;
