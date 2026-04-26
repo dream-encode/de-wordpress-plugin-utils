@@ -39,7 +39,7 @@ class Plugin_Settings_Repository {
 	/**
 	 * REST API schema for this option.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.6.0
 	 * @var    array<string, mixed>
 	 */
 	protected array $schema;
@@ -177,7 +177,7 @@ class Plugin_Settings_Repository {
 	 * schema. Hook this method to rest_api_init (or init) to expose the
 	 * option via /wp/v2/settings.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.6.0
 	 * @return void
 	 */
 	public function register_settings(): void {
