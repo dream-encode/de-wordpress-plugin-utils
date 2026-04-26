@@ -1,5 +1,8 @@
 # Changelog
 
+## [NEXT_VERSION] - [UNRELEASED]
+* BUG: Example fix description.
+
 ## [1.6.0] - 2026-04-26
 * ENH: Make Plugin_Settings_Repository more robust.
 
