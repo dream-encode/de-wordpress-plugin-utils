@@ -1,6 +1,6 @@
 # Changelog
 
-## [NEXT_VERSION] - [UNRELEASED]
+## [1.3.0] - 2026-04-25
 * ENH: Rename Abstract_Migrator to Abstract_Data_Migrator.
 * BUG: Remove some debug logging in the background processor.
 
