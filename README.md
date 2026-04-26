@@ -162,8 +162,8 @@ Logs data through WooCommerce's `WC_Logger`, falling back to `error_log` when Wo
 
 ---
 
-### Abstract_Migrator
-`Dream_Encode\WordPress_Plugin_Utils\Abstracts\Abstract_Migrator`
+### Abstract_Data_Migrator
+`Dream_Encode\WordPress_Plugin_Utils\Abstracts\Abstract_Data_Migrator`
 
 Template-method base for multi-run data migrations driven by Action Scheduler. Each migration is broken into individually-scheduled runs; progress, status, and results are persisted via plugin-supplied storage hooks.
 

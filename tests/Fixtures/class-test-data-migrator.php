@@ -1,25 +1,25 @@
 <?php
 /**
- * Test migrator fixture.
+ * Test data migrator fixture.
  *
  * @package Dream_Encode\WordPress_Plugin_Utils
  */
 
 namespace Dream_Encode\WordPress_Plugin_Utils\Tests\Fixtures;
 
-use Dream_Encode\WordPress_Plugin_Utils\Abstracts\Abstract_Migrator;
+use Dream_Encode\WordPress_Plugin_Utils\Abstracts\Abstract_Data_Migrator;
 
 /**
- * Concrete Abstract_Migrator implementation that persists state in memory.
+ * Concrete Abstract_Data_Migrator implementation that persists state in memory.
  */
-class Test_Migrator extends Abstract_Migrator {
+class Test_Data_Migrator extends Abstract_Data_Migrator {
 
 	/**
 	 * Migrator slug.
 	 *
 	 * @var string
 	 */
-	public $migrator = 'test_migrator';
+	public $migrator = 'test_data_migrator';
 
 	/**
 	 * Migration records keyed by ID.
@@ -62,7 +62,7 @@ class Test_Migrator extends Abstract_Migrator {
 	 * @var array<string, mixed>
 	 */
 	public static array $plugin_settings = array(
-		'migration_action_scheduler_queue_mode'                  => 'async',
+		'migration_action_scheduler_queue_mode'                 => 'async',
 		'migration_action_scheduler_queue_mode_scheduled_delay' => 10,
 	);
 
@@ -205,10 +205,10 @@ class Test_Migrator extends Abstract_Migrator {
 	}
 
 	protected function get_action_scheduler_hook() {
-		return 'test-migrator/run-migration';
+		return 'test-data-migrator/run-migration';
 	}
 
 	protected function get_action_scheduler_group() {
-		return 'test-migrator';
+		return 'test-data-migrator';
 	}
 }

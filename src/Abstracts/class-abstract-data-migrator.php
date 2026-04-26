@@ -1,6 +1,6 @@
 <?php
 /**
- * Abstract migrator class.
+ * Abstract data migrator class.
  *
  * @package Dream_Encode\WordPress_Plugin_Utils\Abstracts
  * @since   1.0.0
@@ -11,7 +11,7 @@ namespace Dream_Encode\WordPress_Plugin_Utils\Abstracts;
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Abstract class Abstract_Migrator
+ * Abstract class Abstract_Data_Migrator
  *
  * Base class for batch-style data migrators that run via ActionScheduler.
  * Persistence operations are declared abstract so each consuming plugin can
@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * @since 1.0.0
  */
-abstract class Abstract_Migrator {
+abstract class Abstract_Data_Migrator {
 
 	/**
 	 * Migrator slug.
@@ -40,7 +40,7 @@ abstract class Abstract_Migrator {
 	 *
 	 * @var string
 	 */
-	public $label = 'Abstract Migrator';
+	public $label = 'Abstract Data Migrator';
 
 	/**
 	 * Params.
