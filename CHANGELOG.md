@@ -1,7 +1,8 @@
 # Changelog
 
 ## [NEXT_VERSION] - [UNRELEASED]
-* BUG: Example fix description.
+* ENH: Rename Abstract_Migrator to Abstract_Data_Migrator.
+* BUG: Remove some debug logging in the background processor.
 
 ## [1.2.0] - 2026-04-25
 * ENH: Promote `Abstract_Plugin_Loader` to concrete `Plugin_Loader` (`Loader\Plugin_Loader`) - no abstract methods; usable directly without subclassing.
