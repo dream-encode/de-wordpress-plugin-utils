@@ -17,7 +17,7 @@ if ( defined( 'DE_WORDPRESS_PLUGIN_UTILS_VERSION' ) ) {
 define( 'DE_WORDPRESS_PLUGIN_UTILS_VERSION', '1.4.0' );
 define( 'DE_WORDPRESS_PLUGIN_UTILS_PATH', __DIR__ );
 
-require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Functions/helpers.php';
+require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Common/class-functions.php';
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Loaders/class-plugin-loader.php';
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Data/class-object-data.php';
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Abstracts/class-abstract-wc-logger.php';
@@ -25,7 +25,7 @@ require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Abstracts/class-abstract-plu
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Abstracts/class-abstract-plugin-upgrader.php';
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Abstracts/class-abstract-plugin-activator.php';
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Abstracts/class-abstract-plugin-deactivator.php';
-require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Abstracts/class-abstract-admin-asset-manager.php';
+require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Assets/class-asset-manager.php';
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Abstracts/class-abstract-rest-api.php';
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Abstracts/class-abstract-rest-controller.php';
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Abstracts/class-abstract-plugin.php';

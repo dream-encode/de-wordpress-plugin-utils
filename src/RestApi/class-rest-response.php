@@ -5,6 +5,8 @@
  * @since 1.4.0
  */
 
+declare( strict_types = 1 );
+
 namespace Dream_Encode\WordPress_Plugin_Utils\RestApi;
 
 use stdClass;

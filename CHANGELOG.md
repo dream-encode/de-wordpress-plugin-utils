@@ -1,7 +1,16 @@
 # Changelog
 
 ## [NEXT_VERSION] - [UNRELEASED]
-* BUG: Example fix description.
+* ENH: Promote `Abstract_Admin_Asset_Manager` to concrete `Asset_Manager` (`Assets\Asset_Manager`) - fully constructor-injected, no subclassing required, works for both admin and front-end assets.
+* ENH: `Asset_Manager` - add `add_screens()` and `add_screens_localization_data()` for runtime registration.
+* ENH: `Asset_Manager` - add `current_screen_assets()`, `current_screen_has_assets()`, `screen_assets()`, `screen_has_assets()`, `screen_get_localized_data()` public helpers.
+* ENH: Replace procedural `helpers.php` with `Functions` static class (`src/Common/class-functions.php`).
+* ENH: Add `Functions::get_mysql_datetime()` - timestamp to MySQL datetime string, extracted from multiple plugins.
+* ENH: Add `Functions::mysql_datetime_to_datetime_long()` - MySQL datetime to long human-readable format, extracted from multiple plugins.
+* ENH: Add `Functions::format_timestamp_to_datetime_long()` - timestamp to long human-readable format.
+* ENH: Add `Functions::convert_seconds_to_minutes_seconds()` - seconds to MM:SS string, extracted from multiple plugins.
+* ENH: Add `Functions::get_user_display_name()` - user nicename by ID with N/A fallback.
+* ENH: Add `declare( strict_types = 1 )` to all source and test PHP files.
 
 ## [1.4.0] - 2026-04-25
 * ENH: Add `REST_Authentication` - WP REST API authentication handler with cookie/app-password support and static permission helpers.

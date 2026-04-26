@@ -102,21 +102,36 @@ Handles plugin upgrade/install logic with cache-clearing for Redis/object cache 
 
 ---
 
-### Abstract_Admin_Asset_Manager
-`Dream_Encode\WordPress_Plugin_Utils\Abstracts\Abstract_Admin_Asset_Manager`
+### Asset_Manager
+`Dream_Encode\WordPress_Plugin_Utils\Assets\Asset_Manager`
 
-Screen-aware admin stylesheet and script enqueuer. Maps admin screens to asset definitions and enqueues only what is needed for the current screen.
+Concrete class. Screen-based stylesheet and script enqueuer for both admin and front-end contexts. All configuration is passed via constructor — no subclassing required for common usage.
 
-**Must implement:**
-- `get_handle_prefix(): string` — prefix applied to all script/style handles.
-- `get_plugin_path(): string` — absolute path to the plugin root.
-- `get_plugin_url(): string` — URL to the plugin root.
-- `get_plugin_version(): string`
-- `get_screens_to_assets(): array` — map of screen IDs to asset definition arrays.
+**Constructor** (all params after `$plugin_version` are optional):
+```php
+new Asset_Manager(
+    handle_prefix: 'my-plugin-',
+    plugin_path:   MY_PLUGIN_PATH,
+    plugin_url:    MY_PLUGIN_URL,
+    plugin_version: MY_PLUGIN_VERSION,
+    screens_to_assets: [ 'edit-post' => [ ['name' => 'editor'] ] ],
+    localization_global: 'MY_PLUGIN',
+    screens_localization_data: [ 'edit-post' => [ 'REST_URL' => '...' ] ],
+    asset_subdir: 'admin/',        // default ''
+    asset_file_prefix: 'admin-',   // default ''
+);
+```
 
 **Public API:**
+- `add_screens( array $screens ): void` — merge additional screen entries at runtime.
+- `add_screens_localization_data( array $data ): void` — merge additional localization entries.
 - `enqueue_styles(): void`
 - `enqueue_scripts(): void`
+- `current_screen_assets(): array` — asset definitions for the current screen.
+- `current_screen_has_assets(): int`
+- `screen_assets( WP_Screen $screen ): array`
+- `screen_has_assets( WP_Screen $screen ): int`
+- `screen_get_localized_data( WP_Screen $screen ): array`
 
 ---
 
@@ -293,11 +308,18 @@ Thin read/write wrapper around a single WordPress option key. Results are cached
 
 ---
 
-## Helper Functions
+## Functions
 
-Namespace: `Dream_Encode\WordPress_Plugin_Utils\Functions`
+`Dream_Encode\WordPress_Plugin_Utils\Common\Functions`
+
+All methods are static.
 
 - `maybe_define_constant( string $name, mixed $value ): void` — defines a PHP constant only if it is not already defined.
+- `get_mysql_datetime( false|float|int $time, string $timezone_string ): string|false` — converts a Unix timestamp to a MySQL `Y-m-d H:i:s` string (defaults to current time, UTC).
+- `mysql_datetime_to_datetime_long( string $datetime ): string|false` — formats a MySQL datetime string to `"Monday January 5, 2026 at 3:42:00 pm"`.
+- `format_timestamp_to_datetime_long( null|float|int $timestamp, string $timezone_string ): string|false` — formats a Unix timestamp to the same long format.
+- `convert_seconds_to_minutes_seconds( int $seconds ): string` — formats an integer number of seconds as `MM:SS` (e.g. `313` → `"05:13"`).
+- `get_user_display_name( int $user_id ): string` — returns the user's `user_nicename`, or `'N/A'` if the user does not exist.
 
 ---
 

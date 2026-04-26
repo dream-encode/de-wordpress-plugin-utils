@@ -46,7 +46,7 @@ require_once __DIR__ . '/Fixtures/class-test-object-data.php';
 require_once __DIR__ . '/Fixtures/class-test-plugin-upgrader.php';
 require_once __DIR__ . '/Fixtures/class-test-plugin-activator.php';
 require_once __DIR__ . '/Fixtures/class-test-plugin-deactivator.php';
-require_once __DIR__ . '/Fixtures/class-test-admin-asset-manager.php';
+require_once __DIR__ . '/Fixtures/class-test-asset-manager.php';
 require_once __DIR__ . '/Fixtures/class-test-rest-api.php';
 require_once __DIR__ . '/Fixtures/class-test-rest-controller.php';
 require_once __DIR__ . '/Fixtures/class-test-plugin.php';
