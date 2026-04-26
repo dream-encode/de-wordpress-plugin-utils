@@ -3,7 +3,7 @@
  * Asset manager.
  *
  * @package Dream_Encode\WordPress_Plugin_Utils\Assets
- * @since   [NEXT_VERSION]
+ * @since   1.5.0
  */
 
 declare( strict_types = 1 );
@@ -32,7 +32,7 @@ defined( 'ABSPATH' ) || exit;
  *   - conditions (bool, optional) — skip the asset when false.
  *   - enqueue_media (bool, optional) — call wp_enqueue_media() before the script.
  *
- * @since [NEXT_VERSION]
+ * @since 1.5.0
  */
 class Asset_Manager {
 
@@ -132,7 +132,7 @@ class Asset_Manager {
 	/**
 	 * Constructor.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.5.0
 	 * @param  string    $handle_prefix             Handle prefix for all assets.
 	 * @param  string    $plugin_path               Absolute plugin base path.
 	 * @param  string    $plugin_url                Plugin base URL.
@@ -177,7 +177,7 @@ class Asset_Manager {
 	/**
 	 * Merge additional screen-to-asset entries into the existing map.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.5.0
 	 * @param  array<string, array<int, array<string, mixed>>>  $screens  Entries to add.
 	 * @return void
 	 */
@@ -188,7 +188,7 @@ class Asset_Manager {
 	/**
 	 * Merge additional screen localization entries into the existing map.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.5.0
 	 * @param  array<string, array<string, mixed>>  $data  Entries to add.
 	 * @return void
 	 */
@@ -199,7 +199,7 @@ class Asset_Manager {
 	/**
 	 * Get the localization data for a specific screen.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.5.0
 	 * @param  WP_Screen  $screen  Screen to look up.
 	 * @return array<string, mixed>
 	 */
@@ -212,7 +212,7 @@ class Asset_Manager {
 	/**
 	 * Enqueue all styles registered for the current screen.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.5.0
 	 * @return void
 	 */
 	public function enqueue_styles(): void {
@@ -222,7 +222,7 @@ class Asset_Manager {
 	/**
 	 * Enqueue all scripts registered for the current screen.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.5.0
 	 * @return void
 	 */
 	public function enqueue_scripts(): void {
@@ -232,7 +232,7 @@ class Asset_Manager {
 	/**
 	 * Get the asset definitions registered for the current screen.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.5.0
 	 * @return array<int, array<string, mixed>>
 	 */
 	public function current_screen_assets(): array {
@@ -248,7 +248,7 @@ class Asset_Manager {
 	/**
 	 * Get the number of asset definitions registered for the current screen.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.5.0
 	 * @return int
 	 */
 	public function current_screen_has_assets(): int {
@@ -258,7 +258,7 @@ class Asset_Manager {
 	/**
 	 * Get the asset definitions registered for a given screen.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.5.0
 	 * @param  WP_Screen  $screen  Screen to check.
 	 * @return array<int, array<string, mixed>>
 	 */
@@ -269,7 +269,7 @@ class Asset_Manager {
 	/**
 	 * Get the number of asset definitions registered for a given screen.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.5.0
 	 * @param  WP_Screen  $screen  Screen to check.
 	 * @return int
 	 */
@@ -280,7 +280,7 @@ class Asset_Manager {
 	/**
 	 * Enqueue the assets of the given type for the current screen.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.5.0
 	 * @param  string  $type  Either 'style' or 'script'.
 	 * @return void
 	 */
@@ -315,7 +315,7 @@ class Asset_Manager {
 	/**
 	 * Get the assets registered for the given screen.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.5.0
 	 * @param  WP_Screen  $screen  Screen to look up.
 	 * @return array<int, array<string, mixed>>
 	 */
@@ -331,7 +331,7 @@ class Asset_Manager {
 	/**
 	 * Determine whether an asset should be enqueued for the given type.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.5.0
 	 * @param  array<string, mixed>  $asset  Asset configuration.
 	 * @param  string               $type   Either 'style' or 'script'.
 	 * @return bool
@@ -355,7 +355,7 @@ class Asset_Manager {
 	/**
 	 * Enqueue a single style asset.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.5.0
 	 * @param  array<string, mixed>  $asset  Asset configuration.
 	 * @return void
 	 */
@@ -376,7 +376,7 @@ class Asset_Manager {
 	/**
 	 * Enqueue a single script asset.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.5.0
 	 * @param  array<string, mixed>  $asset  Asset configuration.
 	 * @return void
 	 */
@@ -426,7 +426,7 @@ class Asset_Manager {
 	/**
 	 * Load the generated .asset.php file for the given asset name.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.5.0
 	 * @param  string  $name  Asset name.
 	 * @return array{dependencies: string[], version: string}
 	 */
@@ -453,7 +453,7 @@ class Asset_Manager {
 	/**
 	 * Filter a raw dependency array down to the supported WP style handles.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.5.0
 	 * @param  string[]  $dependencies  Raw dependencies.
 	 * @return string[]
 	 */
@@ -473,7 +473,7 @@ class Asset_Manager {
 	/**
 	 * Conditionally enqueue the WP media library for the given asset.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.5.0
 	 * @param  array<string, mixed>  $asset  Asset configuration.
 	 * @return void
 	 */
