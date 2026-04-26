@@ -137,6 +137,38 @@ Extends `WP_REST_Controller` with a reusable pattern for REST endpoint controlle
 
 ---
 
+### REST_Authentication
+`Dream_Encode\WordPress_Plugin_Utils\RestApi\REST_Authentication`
+
+Handles WP REST API authentication, including cookie auth error checking, app password authentication, and permission helpers. Auto-registers the `rest_authentication_errors` filter when the file is loaded.
+
+**Static permission helpers:**
+- `check_logged_in_permission(): bool`
+- `check_admin_permission(): bool`
+- `check_editor_permission(): bool`
+- `check_user_permission(): bool`
+- `check_woocommerce_shop_manager_permission(): bool`
+- `check_post_permissions( $post_type, $permission, $user_id ): bool`
+
+**Static accessors:**
+- `get_wp_rest_nonce(): string`
+- `get_wp_user_id(): int`
+
+---
+
+### REST_Response
+`Dream_Encode\WordPress_Plugin_Utils\RestApi\REST_Response`
+
+Simple value object for REST API responses.
+
+**Properties:**
+- `$status` — `string`, defaults to `'error'`.
+- `$message` — `string`, defaults to `''`.
+- `$data` — `mixed`, initialised to a fresh `stdClass`.
+- `$success` — `bool|null`, defaults to `null`.
+
+---
+
 ### Object_Data
 `Dream_Encode\WordPress_Plugin_Utils\Data\Object_Data`
 
