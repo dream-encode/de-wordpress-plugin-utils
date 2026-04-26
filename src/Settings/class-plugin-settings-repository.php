@@ -37,6 +37,14 @@ class Plugin_Settings_Repository {
 	protected array $defaults;
 
 	/**
+	 * REST API schema for this option.
+	 *
+	 * @since  1.6.0
+	 * @var    array<string, mixed>
+	 */
+	protected array $schema;
+
+	/**
 	 * Whether the option should autoload.
 	 *
 	 * @var bool
@@ -54,13 +62,20 @@ class Plugin_Settings_Repository {
 	 * Constructor.
 	 *
 	 * @since 1.0.0
-	 * @param string               $option_name Option name used to store settings.
-	 * @param array<string, mixed> $defaults    Optional. Default setting values.
-	 * @param bool                 $autoload    Optional. Whether the option should autoload. Default true.
+	 * @param  string                $option_name  Option name used to store settings.
+	 * @param  array<string, mixed>  $defaults     Optional. Default setting values.
+	 * @param  array<string, mixed>  $schema       Optional. REST API schema for show_in_rest. Default empty array.
+	 * @param  bool                  $autoload     Optional. Whether the option should autoload. Default true.
 	 */
-	public function __construct( string $option_name, array $defaults = array(), bool $autoload = true ) {
+	public function __construct(
+		string $option_name,
+		array $defaults = array(),
+		array $schema = array(),
+		bool $autoload = true,
+	) {
 		$this->option_name = $option_name;
 		$this->defaults    = $defaults;
+		$this->schema      = $schema;
 		$this->autoload    = $autoload;
 	}
 
@@ -153,6 +168,31 @@ class Plugin_Settings_Repository {
 	 */
 	public function refresh(): void {
 		$this->cache = null;
+	}
+
+	/**
+	 * Register this option with the WordPress Settings API.
+	 *
+	 * Calls register_setting() using the stored option name, defaults, and
+	 * schema. Hook this method to rest_api_init (or init) to expose the
+	 * option via /wp/v2/settings.
+	 *
+	 * @since  1.6.0
+	 * @return void
+	 */
+	public function register_settings(): void {
+		$args = array(
+			'type'    => 'object',
+			'default' => $this->defaults,
+		);
+
+		if ( ! empty( $this->schema ) ) {
+			$args['show_in_rest'] = array(
+				'schema' => $this->schema,
+			);
+		}
+
+		register_setting( 'options', $this->option_name, $args );
 	}
 
 	/**

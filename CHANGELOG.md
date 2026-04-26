@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.6.0] - 2026-04-26
+* ENH: Make Plugin_Settings_Repository more robust.
+
 ## [1.5.0] - 2026-04-26
 * ENH: Promote `Abstract_Admin_Asset_Manager` to concrete `Asset_Manager` (`Assets\Asset_Manager`) - fully constructor-injected, no subclassing required, works for both admin and front-end assets.
 * ENH: `Asset_Manager` - add `add_screens()` and `add_screens_localization_data()` for runtime registration.
