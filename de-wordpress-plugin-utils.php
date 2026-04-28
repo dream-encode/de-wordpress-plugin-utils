@@ -34,3 +34,5 @@ require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Abstracts/class-abstract-bac
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/RestApi/class-rest-authentication.php';
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/RestApi/class-rest-response.php';
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Settings/class-plugin-settings-repository.php';
+require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Export/class-export-csv.php';
+require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Upload/class-csv-upload.php';

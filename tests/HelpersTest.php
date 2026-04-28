@@ -66,6 +66,16 @@ class HelpersTest extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Test that mysql_datetime_to_datetime_short returns a formatted short date.
+	 */
+	public function test_mysql_datetime_to_datetime_short_formats_correctly(): void {
+		$result = Functions::mysql_datetime_to_datetime_short( '2026-01-05 12:00:00' );
+
+		$this->assertStringContainsString( 'Jan', (string) $result );
+		$this->assertStringContainsString( '2026', (string) $result );
+	}
+
+	/**
 	 * Test that mysql_datetime_to_datetime_long returns a formatted long date.
 	 */
 	public function test_mysql_datetime_to_datetime_long_formats_correctly(): void {

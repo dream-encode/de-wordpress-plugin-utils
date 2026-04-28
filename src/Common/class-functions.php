@@ -59,6 +59,19 @@ class Functions {
 	}
 
 	/**
+	 * Format a MySQL DateTime string to a short human-readable date/time.
+	 *
+	 * Example output: "Mon Jan 5, 2026 3:42:00 pm"
+	 *
+	 * @since  [NEXT_VERSION]
+	 * @param  string  $datetime  MySQL DateTime string.
+	 * @return string|false
+	 */
+	public static function mysql_datetime_to_datetime_short( string $datetime ): string|false {
+		return mysql2date( 'D M j, Y g:i:s a', $datetime );
+	}
+
+	/**
 	 * Format a MySQL DateTime string to a long human-readable date/time.
 	 *
 	 * Example output: "Monday January 5, 2026 at 3:42:00 pm"
