@@ -138,7 +138,7 @@ class Export_CSV {
 		}
 
 		$name_segments = array_map(
-			function( $segment ) {
+			function ( $segment ) {
 				$segment = strtolower( $segment );
 				$segment = str_replace( '_', '-', $segment );
 				$segment = sanitize_file_name( $segment );

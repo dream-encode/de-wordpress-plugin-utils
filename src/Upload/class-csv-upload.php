@@ -127,7 +127,7 @@ class CSV_File_Upload_Handler {
 
 		add_filter(
 			'wp_handle_sideload_prefilter',
-			function( $prefilter ) use ( $new_filename ) {
+			function ( $prefilter ) use ( $new_filename ) {
 				$prefilter['name'] = sanitize_file_name( $new_filename );
 
 				return $prefilter;
@@ -136,7 +136,7 @@ class CSV_File_Upload_Handler {
 
 		add_filter(
 			'upload_dir',
-			function( $dirs ) use ( $upload_subdir ) {
+			function ( $dirs ) use ( $upload_subdir ) {
 				$dirs['subdir'] = '/' . $upload_subdir;
 				$dirs['path']   = $dirs['basedir'] . '/' . $upload_subdir;
 				$dirs['url']    = $dirs['baseurl'] . '/' . $upload_subdir;

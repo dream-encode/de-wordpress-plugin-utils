@@ -69,7 +69,7 @@ abstract class Abstract_Plugin_Activator {
 		}
 
 		if ( class_exists( $upgrader_class ) && method_exists( $upgrader_class, 'install' ) ) {
-			call_user_func( array( $upgrader_class, 'install' ) );
+			$upgrader_class::install();
 		}
 	}
 

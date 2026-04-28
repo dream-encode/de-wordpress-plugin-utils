@@ -1,7 +1,8 @@
 # Changelog
 
 ## [NEXT_VERSION] - [UNRELEASED]
-* BUG: Example fix description.
+* ENH: Add CSV Export & Upload classes.
+* ENH: Add mysql_datetime_to_datetime_short function.
 
 ## [1.6.0] - 2026-04-26
 * ENH: Make Plugin_Settings_Repository more robust.
