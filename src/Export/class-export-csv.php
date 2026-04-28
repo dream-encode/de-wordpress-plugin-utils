@@ -2,7 +2,7 @@
 /**
  * A dedicated class to export stuff to CSV files.
  *
- * @since      [NEXT_VERSION]
+ * @since      1.7.0
  * @package    Dream_Encode\WordPress_Plugin_Utils
  * @subpackage Dream_Encode\WordPress_Plugin_Utils\Export
  * @author     David Baumwald <david@dream-encode.com>
@@ -16,7 +16,7 @@ use WP_Filesystem_Base;
 /**
  * A dedicated class to export stuff to CSV files.
  *
- * @since      [NEXT_VERSION]
+ * @since      1.7.0
  * @package    Dream_Encode\WordPress_Plugin_Utils
  * @subpackage Dream_Encode\WordPress_Plugin_Utils\Export
  * @author     David Baumwald <david@dream-encode.com>
@@ -25,7 +25,7 @@ class Export_CSV {
 	/**
 	 * Filename.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @access protected
 	 * @var    string  $filename  The name of the CSV file.
 	 */
@@ -34,7 +34,7 @@ class Export_CSV {
 	/**
 	 * Export directory.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @access protected
 	 * @var    string  $export_directory  The name of export directory.
 	 */
@@ -43,7 +43,7 @@ class Export_CSV {
 	/**
 	 * Headers.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @access protected
 	 * @var    array  $header_row  The column headers for the CSV file.
 	 */
@@ -52,7 +52,7 @@ class Export_CSV {
 	/**
 	 * Data.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @access protected
 	 * @var    array  $data_rows  The data rows for the CSV file.
 	 */
@@ -61,7 +61,7 @@ class Export_CSV {
 	/**
 	 * Errors.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @access public
 	 * @var    WP_Error  $error  Container for errors.
 	 */
@@ -70,7 +70,7 @@ class Export_CSV {
 	/**
 	 * Export_CSV constructor.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @access public
 	 * @param  array  $options  File options.
 	 * @return void
@@ -106,7 +106,7 @@ class Export_CSV {
 	/**
 	 * Set the export directory.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @param  string  $export_directory  Export directory.
 	 * @return void
 	 */
@@ -128,7 +128,7 @@ class Export_CSV {
 	 *
 	 *   payment-activity_2017-01-01_2017-12-31.csv
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @param  array|string  $name_segments  One or more string segments that will comprise the CSV file name.
 	 * @return void
 	 */
@@ -160,7 +160,7 @@ class Export_CSV {
 	 * If used, this also determines how many columns each row should have. Note that, while optional, this method
 	 * must be used before data rows are added.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @param  array  $headers  The column header strings.
 	 * @return bool  True if the column headers were successfully set. Otherwise false.
 	 */
@@ -186,7 +186,7 @@ class Export_CSV {
 	/**
 	 * Add a single row of data to the CSV file.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @param  array  $row  A single row of data.
 	 * @return bool  True if the data row was successfully added. Otherwise false.
 	 */
@@ -220,7 +220,7 @@ class Export_CSV {
 	/**
 	 * Wrapper method for adding multiple data rows at once.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @param  array  $data  Array of data.
 	 * @return void
 	 */
@@ -245,7 +245,7 @@ class Export_CSV {
 	 *
 	 * Note that this method is not recursive, so should only be used for individual data rows, not an entire data set.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @param  array  $fields  Data.
 	 * @return array
 	 */
@@ -288,7 +288,7 @@ class Export_CSV {
 	/**
 	 * Generate the contents of the CSV file.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @return string|false
 	 */
 	protected function generate_file_content() {
@@ -330,7 +330,7 @@ class Export_CSV {
 	/**
 	 * Output the CSV file, or a text file with error messages.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @return void
 	 */
 	public function emit_file() {
@@ -371,7 +371,7 @@ class Export_CSV {
 	/**
 	 * Save the CSV file to a local directory.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @global WP_Filesystem_Base  $wp_filesystem  WordPress filesystem subclass.
 	 * @return false|array
 	 */

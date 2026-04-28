@@ -2,7 +2,7 @@
 /**
  * Class to process an uploaded CSV file.
  *
- * @since      [NEXT_VERSION]
+ * @since      1.7.0
  * @package    Dream_Encode\WordPress_Plugin_Utils
  * @subpackage Dream_Encode\WordPress_Plugin_Utils\Upload
  */
@@ -15,7 +15,7 @@ use WP_Filesystem_Base;
 /**
  * Class to process an uploaded CSV file.
  *
- * @since      [NEXT_VERSION]
+ * @since      1.7.0
  * @package    Dream_Encode\WordPress_Plugin_Utils
  * @subpackage Dream_Encode\WordPress_Plugin_Utils\Upload
  * @author     David Baumwald <david@dream-encode.com>
@@ -24,7 +24,7 @@ class CSV_File_Upload_Handler {
 	/**
 	 * Filesystem instance.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @var    null|WP_Filesystem_Base
 	 */
 	protected $filesystem = null;
@@ -32,7 +32,7 @@ class CSV_File_Upload_Handler {
 	/**
 	 * Raw file.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @var    array
 	 */
 	protected $raw_file = array();
@@ -40,7 +40,7 @@ class CSV_File_Upload_Handler {
 	/**
 	 * Upload subdirectory name.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @var    string
 	 */
 	protected $upload_subdir = 'csv-uploads';
@@ -48,7 +48,7 @@ class CSV_File_Upload_Handler {
 	/**
 	 * Upload path.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @var    false|string
 	 */
 	protected $upload_path = false;
@@ -56,7 +56,7 @@ class CSV_File_Upload_Handler {
 	/**
 	 * Upload URL.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @var    false|string
 	 */
 	protected $upload_url = false;
@@ -64,7 +64,7 @@ class CSV_File_Upload_Handler {
 	/**
 	 * Uploaded file.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @var    false|array
 	 */
 	public $uploaded_csv_file = false;
@@ -72,7 +72,7 @@ class CSV_File_Upload_Handler {
 	/**
 	 * Errors.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @var    WP_Error
 	 */
 	public $error;
@@ -80,7 +80,7 @@ class CSV_File_Upload_Handler {
 	/**
 	 * Initialize upload handler.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @param  array   $file          File entry from $_FILES.
 	 * @param  string  $upload_subdir  Optional. Upload subdirectory name. Default 'csv-uploads'.
 	 */
@@ -101,7 +101,7 @@ class CSV_File_Upload_Handler {
 	/**
 	 * Process uploaded CSV file.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @return void
 	 */
 	public function process_uploaded_csv_file(): void {
@@ -186,7 +186,7 @@ class CSV_File_Upload_Handler {
 	/**
 	 * Get uploaded CSV file.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @return false|array
 	 */
 	public function get_uploaded_csv_file(): false|array {
@@ -196,7 +196,7 @@ class CSV_File_Upload_Handler {
 	/**
 	 * Verify that the upload folder exists and is writable.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @global WP_Filesystem_Base  $wp_filesystem  WordPress filesystem subclass.
 	 * @return bool
 	 */

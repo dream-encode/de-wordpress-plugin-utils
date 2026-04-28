@@ -14,7 +14,7 @@ if ( defined( 'DE_WORDPRESS_PLUGIN_UTILS_VERSION' ) ) {
 	return;
 }
 
-define( 'DE_WORDPRESS_PLUGIN_UTILS_VERSION', '1.6.0' );
+define( 'DE_WORDPRESS_PLUGIN_UTILS_VERSION', '1.7.0' );
 define( 'DE_WORDPRESS_PLUGIN_UTILS_PATH', __DIR__ );
 
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Common/class-functions.php';

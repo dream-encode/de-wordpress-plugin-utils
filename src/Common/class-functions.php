@@ -63,7 +63,7 @@ class Functions {
 	 *
 	 * Example output: "Mon Jan 5, 2026 3:42:00 pm"
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.7.0
 	 * @param  string  $datetime  MySQL DateTime string.
 	 * @return string|false
 	 */
