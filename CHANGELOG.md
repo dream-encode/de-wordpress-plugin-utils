@@ -1,5 +1,8 @@
 # Changelog
 
+## [NEXT_VERSION] - [UNRELEASED]
+* BUG: Example fix description.
+
 ## [1.7.0] - 2026-04-28
 * ENH: Add CSV Export & Upload classes.
 * ENH: Add mysql_datetime_to_datetime_short function.
