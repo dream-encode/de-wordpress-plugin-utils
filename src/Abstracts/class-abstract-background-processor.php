@@ -31,6 +31,13 @@ abstract class Abstract_Background_Processor {
 	public $processor;
 
 	/**
+	 * Processor group slug.
+	 *
+	 * @var string
+	 */
+	public $processor_group = '';
+
+	/**
 	 * Is runnable?
 	 *
 	 * @var bool
@@ -1408,6 +1415,16 @@ abstract class Abstract_Background_Processor {
 	 */
 	public function get_processor() {
 		return $this->processor;
+	}
+
+	/**
+	 * Get current processor group.
+	 *
+	 * @since  1.0.0
+	 * @return string
+	 */
+	public function get_processor_group() {
+		return $this->processor_group;
 	}
 
 	/**
