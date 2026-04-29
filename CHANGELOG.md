@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.7.1] - 2026-04-29
+* BUG: Rest Controller - Make auth methods non-abstract with defaults.
+
 ## [1.7.0] - 2026-04-28
 * ENH: Add CSV Export & Upload classes.
 * ENH: Add mysql_datetime_to_datetime_short function.

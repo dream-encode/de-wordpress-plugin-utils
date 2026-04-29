@@ -13,6 +13,8 @@ use WP_Error;
 use WP_REST_Controller;
 use WP_REST_Response;
 
+use Dream_Encode\WordPress_Plugin_Utils\RestApi\REST_Authentication;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -89,7 +91,9 @@ abstract class Abstract_REST_Controller extends WP_REST_Controller {
 	 * @since 1.0.0
 	 * @return bool
 	 */
-	abstract public function check_admin_permission(): bool;
+	public function check_admin_permission(): bool {
+		return REST_Authentication::check_admin_permission();
+	}
 
 	/**
 	 * Check user can do action.
@@ -97,5 +101,7 @@ abstract class Abstract_REST_Controller extends WP_REST_Controller {
 	 * @since 1.0.0
 	 * @return bool
 	 */
-	abstract public function check_user_permission(): bool;
+	public function check_user_permission(): bool {
+		return REST_Authentication::check_user_permission();
+	}
 }
