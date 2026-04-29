@@ -1,6 +1,6 @@
 # Changelog
 
-## [NEXT_VERSION] - [UNRELEASED]
+## [1.8.0] - 2026-04-29
 * ENH: Background Processor - Add $processor_group param.
 
 ## [1.7.1] - 2026-04-29
