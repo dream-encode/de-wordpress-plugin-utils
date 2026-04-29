@@ -1,7 +1,7 @@
 # Changelog
 
 ## [NEXT_VERSION] - [UNRELEASED]
-* BUG: Example fix description.
+* BUG: Rest Controller - Make auth methods non-abstract with defaults.
 
 ## [1.7.0] - 2026-04-28
 * ENH: Add CSV Export & Upload classes.
