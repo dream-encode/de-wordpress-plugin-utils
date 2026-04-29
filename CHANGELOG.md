@@ -1,7 +1,7 @@
 # Changelog
 
 ## [NEXT_VERSION] - [UNRELEASED]
-* BUG: Example fix description.
+* ENH: Background Processor - Add $processor_group param.
 
 ## [1.7.1] - 2026-04-29
 * BUG: Rest Controller - Make auth methods non-abstract with defaults.
