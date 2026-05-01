@@ -1,6 +1,6 @@
 # Changelog
 
-## [NEXT_VERSION] - [UNRELEASED]
+## [1.9.0] - 2026-05-01
 * ENH: Upgrader - No init if in local environment.
 * ENH: Functions - Add environment_is_local.
 
