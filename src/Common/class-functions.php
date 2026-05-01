@@ -145,7 +145,7 @@ class Functions {
 	/**
 	 * Check if this is a local environment.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.9.0
 	 * @return bool
 	 */
 	public static function environment_is_local(): bool {
