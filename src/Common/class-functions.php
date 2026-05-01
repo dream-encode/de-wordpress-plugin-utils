@@ -141,4 +141,14 @@ class Functions {
 
 		return $user->user_nicename;
 	}
+
+	/**
+	 * Check if this is a local environment.
+	 *
+	 * @since  [NEXT_VERSION]
+	 * @return bool
+	 */
+	public static function environment_is_local(): bool {
+		return 'local' === wp_get_environment_type();
+	}
 }

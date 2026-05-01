@@ -1,7 +1,8 @@
 # Changelog
 
 ## [NEXT_VERSION] - [UNRELEASED]
-* BUG: Example fix description.
+* ENH: Upgrader - No init if in local environment.
+* ENH: Functions - Add environment_is_local.
 
 ## [1.8.0] - 2026-04-29
 * ENH: Background Processor - Add $processor_group param.

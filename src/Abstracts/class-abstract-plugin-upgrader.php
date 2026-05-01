@@ -13,6 +13,8 @@ declare( strict_types = 1 );
 
 namespace Dream_Encode\WordPress_Plugin_Utils\Abstracts;
 
+use Dream_Encode\WordPress_Plugin_Utils\Common\Functions as DEPU_Functions;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -160,6 +162,10 @@ abstract class Abstract_Plugin_Upgrader {
 	 * @return void
 	 */
 	public static function check_version(): void {
+		if ( DEPU_Functions::environment_is_local() ) {
+			return;
+		}
+
 		$prefix              = static::get_prefix();
 		$option_name         = "{$prefix}_plugin_version";
 		$plugin_version      = get_option( $option_name, '' );
