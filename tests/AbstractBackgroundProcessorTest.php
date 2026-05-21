@@ -147,7 +147,52 @@ class AbstractBackgroundProcessorTest extends WP_UnitTestCase {
 		$this->assertContains( 'processor', $keys );
 		$this->assertContains( 'background_processes_id', $keys );
 		$this->assertContains( 'current_position', $keys );
+		$this->assertContains( 'prerequisite_sub_background_processes', $keys );
 	}
+
+	/**
+	 * Verify get_progress() includes synced prerequisite_sub_background_processes after set_incomplete_prerequisite_sub_background_processors().
+	 */
+	public function test_get_progress_includes_synced_prerequisites(): void {
+		$child = new Test_Background_Processor();
+		$child->init_background_processor();
+		$child_id = $child->get_background_processes_id();
+
+		Test_Background_Processor::$db_processes[ $child_id ]['status']   = Abstract_Background_Processor::PROCESS_STATUS_COMPLETE;
+		Test_Background_Processor::$db_processes[ $child_id ]['complete'] = true;
+		Test_Background_Processor::$processes[ $child_id ]['status']       = Abstract_Background_Processor::PROCESS_STATUS_PROCESSING;
+		Test_Background_Processor::$processes[ $child_id ]['complete']    = false;
+
+		$parent_id = 999;
+		$run_id    = 888;
+
+		Test_Background_Processor::$processes[ $parent_id ] = array(
+			'processor'                              => 'test_processor',
+			'background_processes_id'               => $parent_id,
+			'prerequisite_sub_background_processes' => array(
+				array(
+					'processor'               => 'sub_a',
+					'background_processes_id' => $child_id,
+					'status'                  => Abstract_Background_Processor::PROCESS_STATUS_PROCESSING,
+					'complete'                => false,
+				),
+			),
+		);
+
+		Test_Background_Processor::$runs[ $run_id ] = array(
+			'background_processes_id' => $parent_id,
+			'processor'               => 'test_processor',
+		);
+
+		$parent = new Test_Background_Processor();
+		$parent->background_processes_run_id = $run_id;
+		$parent->parse_params();
+		$parent->set_incomplete_prerequisite_sub_background_processors();
+
+		$progress = $parent->get_progress();
+		$this->assertTrue( $progress['prerequisite_sub_background_processes'][0]['complete'] );
+	}
+
 
 	/**
 	 * set_incomplete_prerequisite_sub_background_processors() syncs child status from DB when option is stale.
@@ -234,6 +279,8 @@ class AbstractBackgroundProcessorTest extends WP_UnitTestCase {
 		$processor = new Test_Background_Processor();
 		$processor->init_background_processor();
 		$process_id = $processor->get_background_processes_id();
+
+		$processor->background_processes_run_id = Test_Background_Processor::$processes[ $process_id ]['background_processes_run_id'];
 
 		$processor->background_process_run_start();
 		$processor->post_background_process_run();

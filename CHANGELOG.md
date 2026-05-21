@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.9.2] - 2026-05-21
+* BUG: Changed the return type of get_background_process_by_id() from object|null to \stdClass|null.
+* BUG: Fix tests.
+
 ## [1.9.1] - 2026-05-21
 * BUG: Background Processor - Fix sub processes race condition.
 
