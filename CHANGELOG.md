@@ -1,6 +1,6 @@
 # Changelog
 
-## [NEXT_VERSION] - [UNRELEASED]
+## [1.9.1] - 2026-05-21
 * BUG: Background Processor - Fix sub processes race condition.
 
 ## [1.9.0] - 2026-05-01
