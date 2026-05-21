@@ -223,6 +223,7 @@ class Test_Background_Processor extends Abstract_Background_Processor {
 			'percent_complete',
 			'complete',
 			'status',
+			'background_processes_id',
 			'parent_background_processes_id',
 			'prerequisite_sub_background_processors',
 			'prerequisite_sub_background_processes',
@@ -245,6 +246,9 @@ class Test_Background_Processor extends Abstract_Background_Processor {
 			'total_rows_skipped',
 			'total_rows_failed',
 			'total_rows_processed',
+			'background_process_runs',
+			'prerequisite_sub_background_processors',
+			'prerequisite_sub_background_processes',
 		);
 	}
 
@@ -274,6 +278,14 @@ class Test_Background_Processor extends Abstract_Background_Processor {
 
 	protected function get_action_scheduler_group() {
 		return 'test-background-processor';
+	}
+
+	public function schedule_background_process_run( $background_processes_run_id, $delay = false ) {
+		return 123;
+	}
+
+	public function background_process_run_start() {
+		parent::background_process_run_start();
 	}
 }
 

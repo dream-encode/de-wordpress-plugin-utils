@@ -1692,7 +1692,7 @@ abstract class Abstract_Background_Processor {
 	 *
 	 * @since  1.0.0
 	 * @param  int  $background_processes_id  Process ID.
-	 * @return object|null
+	 * @return \stdClass|null
 	 */
 	abstract protected function get_background_process_by_id( $background_processes_id );
 
