@@ -24,11 +24,18 @@ class Test_Background_Processor extends Abstract_Background_Processor {
 	public $processor = 'test_processor';
 
 	/**
-	 * Background process records keyed by ID.
+	 * Background process option records keyed by ID.
 	 *
 	 * @var array<int, array<string, mixed>>
 	 */
 	public static array $processes = array();
+
+	/**
+	 * Background process DB records keyed by ID.
+	 *
+	 * @var array<int, array<string, mixed>>
+	 */
+	public static array $db_processes = array();
 
 	/**
 	 * Background process run records keyed by ID.
@@ -108,6 +115,7 @@ class Test_Background_Processor extends Abstract_Background_Processor {
 	 */
 	public static function reset(): void {
 		self::$processes            = array();
+		self::$db_processes         = array();
 		self::$runs                 = array();
 		self::$messages             = array();
 		self::$completed_processes  = array();
@@ -123,6 +131,7 @@ class Test_Background_Processor extends Abstract_Background_Processor {
 		$args['background_processes_id'] = self::$next_process_id++;
 
 		self::$processes[ $args['background_processes_id'] ] = $args;
+		self::$db_processes[ $args['background_processes_id'] ] = $args;
 
 		$this->background_processes_id = $args['background_processes_id'];
 
@@ -154,7 +163,8 @@ class Test_Background_Processor extends Abstract_Background_Processor {
 
 	protected function update_background_process( $data ) {
 		if ( ! empty( $data['background_processes_id'] ) ) {
-			self::$processes[ $data['background_processes_id'] ] = $data;
+			self::$processes[ $data['background_processes_id'] ]    = $data;
+			self::$db_processes[ $data['background_processes_id'] ] = $data;
 		}
 	}
 
@@ -174,6 +184,15 @@ class Test_Background_Processor extends Abstract_Background_Processor {
 
 	protected function save_completed_background_process( $data ) {
 		self::$completed_processes[] = $data;
+
+		if ( ! empty( $data['background_processes_id'] ) ) {
+			if ( isset( self::$db_processes[ $data['background_processes_id'] ] ) ) {
+				self::$db_processes[ $data['background_processes_id'] ]['status']   = self::PROCESS_STATUS_COMPLETE;
+				self::$db_processes[ $data['background_processes_id'] ]['complete'] = true;
+			}
+
+			unset( self::$processes[ $data['background_processes_id'] ] );
+		}
 	}
 
 	protected function save_completed_background_process_run( $data ) {
@@ -181,11 +200,11 @@ class Test_Background_Processor extends Abstract_Background_Processor {
 	}
 
 	protected function get_background_process_by_id( $background_processes_id ) {
-		if ( ! isset( self::$processes[ $background_processes_id ] ) ) {
+		if ( ! isset( self::$db_processes[ $background_processes_id ] ) ) {
 			return null;
 		}
 
-		return (object) self::$processes[ $background_processes_id ];
+		return (object) self::$db_processes[ $background_processes_id ];
 	}
 
 	protected function update_prerequisite_sub_process_parent_background_process( $background_processes_id ) {
@@ -205,6 +224,8 @@ class Test_Background_Processor extends Abstract_Background_Processor {
 			'complete',
 			'status',
 			'parent_background_processes_id',
+			'prerequisite_sub_background_processors',
+			'prerequisite_sub_background_processes',
 		);
 	}
 
