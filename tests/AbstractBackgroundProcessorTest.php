@@ -148,4 +148,150 @@ class AbstractBackgroundProcessorTest extends WP_UnitTestCase {
 		$this->assertContains( 'background_processes_id', $keys );
 		$this->assertContains( 'current_position', $keys );
 	}
+
+	/**
+	 * set_incomplete_prerequisite_sub_background_processors() syncs child status from DB when option is stale.
+	 */
+	public function test_set_incomplete_prerequisite_sub_background_processors_syncs_from_db(): void {
+		$child = new Test_Background_Processor();
+		$child->init_background_processor();
+		$child_id = $child->get_background_processes_id();
+
+		// Mark child complete in DB but stale in option.
+		Test_Background_Processor::$db_processes[ $child_id ]['status']   = Abstract_Background_Processor::PROCESS_STATUS_COMPLETE;
+		Test_Background_Processor::$db_processes[ $child_id ]['complete'] = true;
+		Test_Background_Processor::$processes[ $child_id ]['status']       = Abstract_Background_Processor::PROCESS_STATUS_PROCESSING;
+		Test_Background_Processor::$processes[ $child_id ]['complete']    = false;
+
+		$parent = new Test_Background_Processor();
+		$parent->prerequisite_sub_background_processes = array(
+			array(
+				'processor'                => 'sub_a',
+				'background_processes_id'  => $child_id,
+				'status'                   => Abstract_Background_Processor::PROCESS_STATUS_PROCESSING,
+				'complete'                 => false,
+			),
+		);
+
+		$parent->set_incomplete_prerequisite_sub_background_processors();
+
+		$this->assertEmpty( $parent->get_incomplete_prerequisite_sub_background_processors() );
+		$this->assertTrue( $parent->prerequisite_sub_background_processes[0]['complete'] );
+		$this->assertSame( Abstract_Background_Processor::PROCESS_STATUS_COMPLETE, $parent->prerequisite_sub_background_processes[0]['status'] );
+	}
+
+	/**
+	 * init() persists synced prerequisite statuses back to the option store.
+	 */
+	public function test_init_persists_synced_prerequisite_statuses(): void {
+		$child = new Test_Background_Processor();
+		$child->init_background_processor();
+		$child_id = $child->get_background_processes_id();
+
+		// Mark child complete in DB but stale in option.
+		Test_Background_Processor::$db_processes[ $child_id ]['status']   = Abstract_Background_Processor::PROCESS_STATUS_COMPLETE;
+		Test_Background_Processor::$db_processes[ $child_id ]['complete'] = true;
+		Test_Background_Processor::$processes[ $child_id ]['status']       = Abstract_Background_Processor::PROCESS_STATUS_PROCESSING;
+		Test_Background_Processor::$processes[ $child_id ]['complete']    = false;
+
+		$parent_id = 999;
+		$run_id    = 888;
+
+		// Seed the parent option with the stale child reference.
+		Test_Background_Processor::$processes[ $parent_id ] = array(
+			'processor'                              => 'test_processor',
+			'background_processes_id'               => $parent_id,
+			'prerequisite_sub_background_processes' => array(
+				array(
+					'processor'               => 'sub_a',
+					'background_processes_id' => $child_id,
+					'status'                  => Abstract_Background_Processor::PROCESS_STATUS_PROCESSING,
+					'complete'                => false,
+				),
+			),
+		);
+
+		// Seed the run option so parse_params() can locate the parent.
+		Test_Background_Processor::$runs[ $run_id ] = array(
+			'background_processes_id' => $parent_id,
+			'processor'               => 'test_processor',
+		);
+
+		$parent = new Test_Background_Processor();
+		$parent->background_processes_run_id = $run_id;
+		$parent->init();
+
+		// The parent option should have been overwritten with the synced (complete) state.
+		$saved_option = Test_Background_Processor::$processes[ $parent_id ];
+		$this->assertTrue( $saved_option['prerequisite_sub_background_processes'][0]['complete'] );
+		$this->assertSame( Abstract_Background_Processor::PROCESS_STATUS_COMPLETE, $saved_option['prerequisite_sub_background_processes'][0]['status'] );
+	}
+
+	/**
+	 * post_background_process_run() saves the option after pushing the completed run into the array.
+	 */
+	public function test_post_background_process_run_saves_option_with_run_in_array(): void {
+		$processor = new Test_Background_Processor();
+		$processor->init_background_processor();
+		$process_id = $processor->get_background_processes_id();
+
+		$processor->background_process_run_start();
+		$processor->post_background_process_run();
+
+		$saved_option = Test_Background_Processor::$processes[ $process_id ];
+		$this->assertNotEmpty( $saved_option['background_process_runs'] );
+		$this->assertCount( 1, $saved_option['background_process_runs'] );
+		$this->assertSame( Abstract_Background_Processor::PROCESS_STATUS_COMPLETE, $saved_option['background_process_runs'][0]['status'] );
+	}
+
+	/**
+	 * Parent process proceeds when a child is DB-complete but its option entry is still stale.
+	 */
+	public function test_parent_proceeds_when_child_db_complete_but_option_incomplete(): void {
+		$child = new Test_Background_Processor();
+		$child->init_background_processor();
+		$child_id = $child->get_background_processes_id();
+
+		// Mark child complete in DB but stale in option.
+		Test_Background_Processor::$db_processes[ $child_id ]['status']   = Abstract_Background_Processor::PROCESS_STATUS_COMPLETE;
+		Test_Background_Processor::$db_processes[ $child_id ]['complete'] = true;
+		Test_Background_Processor::$processes[ $child_id ]['status']       = Abstract_Background_Processor::PROCESS_STATUS_PROCESSING;
+		Test_Background_Processor::$processes[ $child_id ]['complete']    = false;
+
+		$parent_id = 999;
+		$run_id    = 888;
+
+		// Seed the parent option with the stale child reference.
+		Test_Background_Processor::$processes[ $parent_id ] = array(
+			'processor'                              => 'test_processor',
+			'background_processes_id'               => $parent_id,
+			'prerequisite_sub_background_processes' => array(
+				array(
+					'processor'               => 'sub_a',
+					'background_processes_id' => $child_id,
+					'status'                  => Abstract_Background_Processor::PROCESS_STATUS_PROCESSING,
+					'complete'                => false,
+				),
+			),
+			'total_rows'                             => 10,
+			'current_position'                       => 0,
+		);
+
+		// Seed the run option.
+		Test_Background_Processor::$runs[ $run_id ] = array(
+			'background_processes_id' => $parent_id,
+			'processor'               => 'test_processor',
+		);
+
+		$parent = new Test_Background_Processor();
+		$parent->background_processes_run_id = $run_id;
+		$parent->init();
+
+		$this->assertEmpty( $parent->get_incomplete_prerequisite_sub_background_processors() );
+
+		// Verify the option was also updated so the REST API sees the correct state.
+		$saved_option = Test_Background_Processor::$processes[ $parent_id ];
+		$this->assertTrue( $saved_option['prerequisite_sub_background_processes'][0]['complete'] );
+		$this->assertSame( Abstract_Background_Processor::PROCESS_STATUS_COMPLETE, $saved_option['prerequisite_sub_background_processes'][0]['status'] );
+	}
 }

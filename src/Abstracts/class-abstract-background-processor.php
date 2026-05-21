@@ -393,6 +393,8 @@ abstract class Abstract_Background_Processor {
 		$this->parse_sub_params();
 
 		$this->set_incomplete_prerequisite_sub_background_processors();
+
+		$this->update_background_process_option( $this->get_background_processes_id(), $this->get_progress() );
 	}
 
 	/**
@@ -595,7 +597,6 @@ abstract class Abstract_Background_Processor {
 		return $initial;
 	}
 
-
 	/**
 	 * Queue prerequisite processors.
 	 *
@@ -675,7 +676,24 @@ abstract class Abstract_Background_Processor {
 	 * @return void
 	 */
 	public function set_incomplete_prerequisite_sub_background_processors() {
-		$incomplete = wp_list_filter( $this->get_prerequisite_sub_background_processes(), array( 'complete' => false ) );
+		$prerequisite_sub_background_processes = $this->get_prerequisite_sub_background_processes();
+
+		foreach ( $prerequisite_sub_background_processes as &$sub_process ) {
+			if ( empty( $sub_process['background_processes_id'] ) ) {
+				continue;
+			}
+
+			$db_process = $this->get_background_process_by_id( $sub_process['background_processes_id'] );
+
+			if ( $db_process && in_array( $db_process->status, array( self::PROCESS_STATUS_COMPLETE, self::PROCESS_STATUS_FAILED, self::PROCESS_STATUS_CANCELLED ), true ) ) {
+				$sub_process['status']   = $db_process->status;
+				$sub_process['complete'] = true;
+			}
+		}
+
+		$this->prerequisite_sub_background_processes = $prerequisite_sub_background_processes;
+
+		$incomplete = wp_list_filter( $this->prerequisite_sub_background_processes, array( 'complete' => false ) );
 
 		$this->incomplete_prerequisite_sub_background_processors = $incomplete;
 	}
@@ -1019,8 +1037,6 @@ abstract class Abstract_Background_Processor {
 			);
 		}
 
-		$this->update_background_process_option( $this->get_background_processes_id(), $this->get_progress() );
-
 		$this->save_background_process_run_results();
 	}
 
@@ -1040,6 +1056,8 @@ abstract class Abstract_Background_Processor {
 		$this->update_percent_complete();
 
 		$this->background_process_runs[] = $this->get_current_background_process_run();
+
+		$this->update_background_process_option( $this->get_background_processes_id(), $this->get_progress() );
 	}
 
 	/**
