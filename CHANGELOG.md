@@ -1,7 +1,7 @@
 # Changelog
 
 ## [NEXT_VERSION] - [UNRELEASED]
-* BUG: Example fix description.
+* BUG: Background Processor - Fix sub processes race condition.
 
 ## [1.9.0] - 2026-05-01
 * ENH: Upgrader - No init if in local environment.
