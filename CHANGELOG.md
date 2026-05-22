@@ -1,7 +1,8 @@
 # Changelog
 
 ## [NEXT_VERSION] - [UNRELEASED]
-* BUG: Example fix description.
+* ENH: Background Processor - Add `total_elapsed_time` property, getter, and sync it from DB `completed_time`/`start_time` for prerequisite sub-processes.
+* BUG: Update tests for `total_elapsed_time` and seed `completed_time`/`start_time` on fixture DB records.
 
 ## [1.9.3] - 2026-05-22
 * BUG: Background Processor - Prerequisite sub-process sync now checks child option first and copies completion metrics.
