@@ -1,5 +1,8 @@
 # Changelog
 
+## [NEXT_VERSION] - [UNRELEASED]
+* BUG: Example fix description.
+
 ## [1.9.4] - 2026-05-22
 * ENH: Background Processor - Add `total_elapsed_time` property, getter, and sync it from DB `completed_time`/`start_time` for prerequisite sub-processes.
 * BUG: Update tests for `total_elapsed_time` and seed `completed_time`/`start_time` on fixture DB records.
