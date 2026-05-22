@@ -683,11 +683,25 @@ abstract class Abstract_Background_Processor {
 				continue;
 			}
 
-			$db_process = $this->get_background_process_by_id( $sub_process['background_processes_id'] );
+			$child_id = $sub_process['background_processes_id'];
+
+			$child_option = $this->get_background_process_option( $child_id, true );
+
+			if ( $child_option && ! empty( $child_option['complete'] ) ) {
+				$sub_process = array_merge( $sub_process, $child_option );
+
+				continue;
+			}
+
+			$db_process = $this->get_background_process_by_id( $child_id );
 
 			if ( $db_process && in_array( $db_process->status, array( self::PROCESS_STATUS_COMPLETE, self::PROCESS_STATUS_FAILED, self::PROCESS_STATUS_CANCELLED ), true ) ) {
-				$sub_process['status']   = $db_process->status;
-				$sub_process['complete'] = true;
+				$sub_process['status']               = $db_process->status;
+				$sub_process['complete']             = true;
+				$sub_process['total_rows_processed'] = (int) ( $db_process->total_rows_processed ?? 0 );
+				$sub_process['total_time']           = (float) ( $db_process->total_processing_time ?? 0.0 );
+				$sub_process['completed_time']       = (int) ( $db_process->completed_time ?? 0 );
+				$sub_process['percent_complete']     = 100;
 			}
 		}
 

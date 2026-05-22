@@ -1,7 +1,8 @@
 # Changelog
 
 ## [NEXT_VERSION] - [UNRELEASED]
-* BUG: Example fix description.
+* BUG: Background Processor - Prerequisite sub-process sync now checks child option first and copies completion metrics.
+* BUG: Update tests for new prerequisite sub-process sync behavior.
 
 ## [1.9.2] - 2026-05-21
 * BUG: Changed the return type of get_background_process_by_id() from object|null to \stdClass|null.
