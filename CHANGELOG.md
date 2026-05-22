@@ -1,6 +1,6 @@
 # Changelog
 
-## [NEXT_VERSION] - [UNRELEASED]
+## [1.9.3] - 2026-05-22
 * BUG: Background Processor - Prerequisite sub-process sync now checks child option first and copies completion metrics.
 * BUG: Update tests for new prerequisite sub-process sync behavior.
 
