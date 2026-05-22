@@ -158,10 +158,13 @@ class AbstractBackgroundProcessorTest extends WP_UnitTestCase {
 		$child->init_background_processor();
 		$child_id = $child->get_background_processes_id();
 
-		Test_Background_Processor::$db_processes[ $child_id ]['status']   = Abstract_Background_Processor::PROCESS_STATUS_COMPLETE;
-		Test_Background_Processor::$db_processes[ $child_id ]['complete'] = true;
-		Test_Background_Processor::$processes[ $child_id ]['status']       = Abstract_Background_Processor::PROCESS_STATUS_PROCESSING;
-		Test_Background_Processor::$processes[ $child_id ]['complete']    = false;
+		Test_Background_Processor::$db_processes[ $child_id ]['status']                = Abstract_Background_Processor::PROCESS_STATUS_COMPLETE;
+		Test_Background_Processor::$db_processes[ $child_id ]['complete']              = true;
+		Test_Background_Processor::$db_processes[ $child_id ]['total_rows_processed']    = 50;
+		Test_Background_Processor::$db_processes[ $child_id ]['total_processing_time']   = 120.5;
+		Test_Background_Processor::$db_processes[ $child_id ]['completed_time']          = 1700000000;
+		Test_Background_Processor::$processes[ $child_id ]['status']                    = Abstract_Background_Processor::PROCESS_STATUS_PROCESSING;
+		Test_Background_Processor::$processes[ $child_id ]['complete']                 = false;
 
 		$parent_id = 999;
 		$run_id    = 888;
@@ -203,10 +206,13 @@ class AbstractBackgroundProcessorTest extends WP_UnitTestCase {
 		$child_id = $child->get_background_processes_id();
 
 		// Mark child complete in DB but stale in option.
-		Test_Background_Processor::$db_processes[ $child_id ]['status']   = Abstract_Background_Processor::PROCESS_STATUS_COMPLETE;
-		Test_Background_Processor::$db_processes[ $child_id ]['complete'] = true;
-		Test_Background_Processor::$processes[ $child_id ]['status']       = Abstract_Background_Processor::PROCESS_STATUS_PROCESSING;
-		Test_Background_Processor::$processes[ $child_id ]['complete']    = false;
+		Test_Background_Processor::$db_processes[ $child_id ]['status']                = Abstract_Background_Processor::PROCESS_STATUS_COMPLETE;
+		Test_Background_Processor::$db_processes[ $child_id ]['complete']              = true;
+		Test_Background_Processor::$db_processes[ $child_id ]['total_rows_processed']    = 50;
+		Test_Background_Processor::$db_processes[ $child_id ]['total_processing_time']   = 120.5;
+		Test_Background_Processor::$db_processes[ $child_id ]['completed_time']          = 1700000000;
+		Test_Background_Processor::$processes[ $child_id ]['status']                    = Abstract_Background_Processor::PROCESS_STATUS_PROCESSING;
+		Test_Background_Processor::$processes[ $child_id ]['complete']                 = false;
 
 		$parent = new Test_Background_Processor();
 		$parent->prerequisite_sub_background_processes = array(
@@ -223,6 +229,10 @@ class AbstractBackgroundProcessorTest extends WP_UnitTestCase {
 		$this->assertEmpty( $parent->get_incomplete_prerequisite_sub_background_processors() );
 		$this->assertTrue( $parent->prerequisite_sub_background_processes[0]['complete'] );
 		$this->assertSame( Abstract_Background_Processor::PROCESS_STATUS_COMPLETE, $parent->prerequisite_sub_background_processes[0]['status'] );
+		$this->assertSame( 50, $parent->prerequisite_sub_background_processes[0]['total_rows_processed'] );
+		$this->assertSame( 120.5, $parent->prerequisite_sub_background_processes[0]['total_time'] );
+		$this->assertSame( 1700000000, $parent->prerequisite_sub_background_processes[0]['completed_time'] );
+		$this->assertSame( 100, $parent->prerequisite_sub_background_processes[0]['percent_complete'] );
 	}
 
 	/**
@@ -234,10 +244,13 @@ class AbstractBackgroundProcessorTest extends WP_UnitTestCase {
 		$child_id = $child->get_background_processes_id();
 
 		// Mark child complete in DB but stale in option.
-		Test_Background_Processor::$db_processes[ $child_id ]['status']   = Abstract_Background_Processor::PROCESS_STATUS_COMPLETE;
-		Test_Background_Processor::$db_processes[ $child_id ]['complete'] = true;
-		Test_Background_Processor::$processes[ $child_id ]['status']       = Abstract_Background_Processor::PROCESS_STATUS_PROCESSING;
-		Test_Background_Processor::$processes[ $child_id ]['complete']    = false;
+		Test_Background_Processor::$db_processes[ $child_id ]['status']                = Abstract_Background_Processor::PROCESS_STATUS_COMPLETE;
+		Test_Background_Processor::$db_processes[ $child_id ]['complete']              = true;
+		Test_Background_Processor::$db_processes[ $child_id ]['total_rows_processed']    = 50;
+		Test_Background_Processor::$db_processes[ $child_id ]['total_processing_time']   = 120.5;
+		Test_Background_Processor::$db_processes[ $child_id ]['completed_time']          = 1700000000;
+		Test_Background_Processor::$processes[ $child_id ]['status']                    = Abstract_Background_Processor::PROCESS_STATUS_PROCESSING;
+		Test_Background_Processor::$processes[ $child_id ]['complete']                 = false;
 
 		$parent_id = 999;
 		$run_id    = 888;
@@ -270,6 +283,10 @@ class AbstractBackgroundProcessorTest extends WP_UnitTestCase {
 		$saved_option = Test_Background_Processor::$processes[ $parent_id ];
 		$this->assertTrue( $saved_option['prerequisite_sub_background_processes'][0]['complete'] );
 		$this->assertSame( Abstract_Background_Processor::PROCESS_STATUS_COMPLETE, $saved_option['prerequisite_sub_background_processes'][0]['status'] );
+		$this->assertSame( 50, $saved_option['prerequisite_sub_background_processes'][0]['total_rows_processed'] );
+		$this->assertSame( 120.5, $saved_option['prerequisite_sub_background_processes'][0]['total_time'] );
+		$this->assertSame( 1700000000, $saved_option['prerequisite_sub_background_processes'][0]['completed_time'] );
+		$this->assertSame( 100, $saved_option['prerequisite_sub_background_processes'][0]['percent_complete'] );
 	}
 
 	/**
@@ -300,10 +317,13 @@ class AbstractBackgroundProcessorTest extends WP_UnitTestCase {
 		$child_id = $child->get_background_processes_id();
 
 		// Mark child complete in DB but stale in option.
-		Test_Background_Processor::$db_processes[ $child_id ]['status']   = Abstract_Background_Processor::PROCESS_STATUS_COMPLETE;
-		Test_Background_Processor::$db_processes[ $child_id ]['complete'] = true;
-		Test_Background_Processor::$processes[ $child_id ]['status']       = Abstract_Background_Processor::PROCESS_STATUS_PROCESSING;
-		Test_Background_Processor::$processes[ $child_id ]['complete']    = false;
+		Test_Background_Processor::$db_processes[ $child_id ]['status']                = Abstract_Background_Processor::PROCESS_STATUS_COMPLETE;
+		Test_Background_Processor::$db_processes[ $child_id ]['complete']              = true;
+		Test_Background_Processor::$db_processes[ $child_id ]['total_rows_processed']    = 50;
+		Test_Background_Processor::$db_processes[ $child_id ]['total_processing_time']   = 120.5;
+		Test_Background_Processor::$db_processes[ $child_id ]['completed_time']          = 1700000000;
+		Test_Background_Processor::$processes[ $child_id ]['status']                    = Abstract_Background_Processor::PROCESS_STATUS_PROCESSING;
+		Test_Background_Processor::$processes[ $child_id ]['complete']                 = false;
 
 		$parent_id = 999;
 		$run_id    = 888;
@@ -340,5 +360,9 @@ class AbstractBackgroundProcessorTest extends WP_UnitTestCase {
 		$saved_option = Test_Background_Processor::$processes[ $parent_id ];
 		$this->assertTrue( $saved_option['prerequisite_sub_background_processes'][0]['complete'] );
 		$this->assertSame( Abstract_Background_Processor::PROCESS_STATUS_COMPLETE, $saved_option['prerequisite_sub_background_processes'][0]['status'] );
+		$this->assertSame( 50, $saved_option['prerequisite_sub_background_processes'][0]['total_rows_processed'] );
+		$this->assertSame( 120.5, $saved_option['prerequisite_sub_background_processes'][0]['total_time'] );
+		$this->assertSame( 1700000000, $saved_option['prerequisite_sub_background_processes'][0]['completed_time'] );
+		$this->assertSame( 100, $saved_option['prerequisite_sub_background_processes'][0]['percent_complete'] );
 	}
 }
