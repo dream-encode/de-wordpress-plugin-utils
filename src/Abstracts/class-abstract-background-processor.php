@@ -185,6 +185,15 @@ abstract class Abstract_Background_Processor {
 	protected $total_time = 0;
 
 	/**
+	 * Total elapsed time of current process.
+	 *
+	 * Derived from completed_time minus start_time (wall-clock elapsed time).
+	 *
+	 * @var float
+	 */
+	protected $total_elapsed_time = 0;
+
+	/**
 	 * Current position.
 	 *
 	 * @var int
@@ -701,6 +710,7 @@ abstract class Abstract_Background_Processor {
 				$sub_process['total_rows_processed'] = (int) ( $db_process->total_rows_processed ?? 0 );
 				$sub_process['total_time']           = (float) ( $db_process->total_processing_time ?? 0.0 );
 				$sub_process['completed_time']       = (int) ( $db_process->completed_time ?? 0 );
+				$sub_process['total_elapsed_time']   = round( (float) ( $db_process->completed_time ?? 0 ) - (float) ( $db_process->start_time ?? 0 ), 4 );
 				$sub_process['percent_complete']     = 100;
 			}
 		}
@@ -1097,7 +1107,8 @@ abstract class Abstract_Background_Processor {
 		$this->completed_time = $completed_time;
 		$this->status         = self::PROCESS_STATUS_COMPLETE;
 
-		$this->total_time = round( $this->get_total_time(), 4 );
+		$this->total_time         = round( $this->get_total_time(), 4 );
+		$this->total_elapsed_time = round( $this->completed_time - $this->start_time, 4 );
 
 		$this->save_completed_background_process( $this->get_progress() );
 	}
@@ -1367,6 +1378,18 @@ abstract class Abstract_Background_Processor {
 	 */
 	public function get_total_time() {
 		return $this->total_time;
+	}
+
+	/**
+	 * Get total elapsed time.
+	 *
+	 * Wall-clock elapsed time from start to completion.
+	 *
+	 * @since  NEXT_VERSION
+	 * @return float
+	 */
+	public function get_total_elapsed_time() {
+		return $this->total_elapsed_time;
 	}
 
 	/**

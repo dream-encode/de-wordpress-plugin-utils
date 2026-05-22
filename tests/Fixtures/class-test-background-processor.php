@@ -246,6 +246,7 @@ class Test_Background_Processor extends Abstract_Background_Processor {
 			'total_rows_skipped',
 			'total_rows_failed',
 			'total_rows_processed',
+			'total_elapsed_time',
 			'background_process_runs',
 			'prerequisite_sub_background_processors',
 			'prerequisite_sub_background_processes',
