@@ -1,7 +1,7 @@
 # Changelog
 
 ## [NEXT_VERSION] - [UNRELEASED]
-* BUG: Example fix description.
+* BUG: Background Processor - Try to fix elapsed time again.
 
 ## [1.9.4] - 2026-05-22
 * ENH: Background Processor - Add `total_elapsed_time` property, getter, and sync it from DB `completed_time`/`start_time` for prerequisite sub-processes.
