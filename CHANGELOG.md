@@ -1,6 +1,6 @@
 # Changelog
 
-## [NEXT_VERSION] - [UNRELEASED]
+## [1.9.5] - 2026-05-26
 * BUG: Background Processor - Try to fix elapsed time again.
 
 ## [1.9.4] - 2026-05-22
