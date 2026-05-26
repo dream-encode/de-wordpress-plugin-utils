@@ -694,14 +694,18 @@ abstract class Abstract_Background_Processor {
 
 			$child_id = $sub_process['background_processes_id'];
 
+			// Load the child's latest option data first. If the child finished
+			// cleanly its option will contain all correctly-derived final values.
 			$child_option = $this->get_background_process_option( $child_id, true );
 
 			if ( $child_option && ! empty( $child_option['complete'] ) ) {
+				// Child option is present and complete - merge all progress fields
+				// so the parent gets consistent, derived values.
 				$sub_process = array_merge( $sub_process, $child_option );
-
 				continue;
 			}
 
+			// Child option is missing or also stale. Fall back to the DB truth.
 			$db_process = $this->get_background_process_by_id( $child_id );
 
 			if ( $db_process && in_array( $db_process->status, array( self::PROCESS_STATUS_COMPLETE, self::PROCESS_STATUS_FAILED, self::PROCESS_STATUS_CANCELLED ), true ) ) {
@@ -710,12 +714,19 @@ abstract class Abstract_Background_Processor {
 				$sub_process['total_rows_processed'] = (int) ( $db_process->total_rows_processed ?? 0 );
 				$sub_process['total_time']           = (float) ( $db_process->total_processing_time ?? 0.0 );
 				$sub_process['completed_time']       = (int) ( $db_process->completed_time ?? 0 );
-				$sub_process['total_elapsed_time']   = round( (float) ( $db_process->completed_time ?? 0 ) - (float) ( $db_process->start_time ?? 0 ), 4 );
+				$sub_process['start_time']           = (float) ( $db_process->start_time ?? 0.0 );
+				$sub_process['total_elapsed_time']   = round( (float) ( $db_process->completed_time ?? 0 ) - (float) ( $db_process->start_time ?? 0.0 ), 4 );
 				$sub_process['percent_complete']     = 100;
 			}
 		}
 
 		$this->prerequisite_sub_background_processes = $prerequisite_sub_background_processes;
+
+		foreach ( $this->prerequisite_sub_background_processes as &$sub_process ) {
+			if ( ! empty( $sub_process['complete'] ) && empty( $sub_process['total_elapsed_time'] ) && ! empty( $sub_process['completed_time'] ) && ! empty( $sub_process['start_time'] ) ) {
+				$sub_process['total_elapsed_time'] = round( (float) $sub_process['completed_time'] - (float) $sub_process['start_time'], 4 );
+			}
+		}
 
 		$incomplete = wp_list_filter( $this->prerequisite_sub_background_processes, array( 'complete' => false ) );
 
