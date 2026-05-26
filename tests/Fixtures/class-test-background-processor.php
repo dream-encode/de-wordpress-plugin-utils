@@ -227,6 +227,7 @@ class Test_Background_Processor extends Abstract_Background_Processor {
 			'parent_background_processes_id',
 			'prerequisite_sub_background_processors',
 			'prerequisite_sub_background_processes',
+			'total_elapsed_time',
 		);
 	}
 
