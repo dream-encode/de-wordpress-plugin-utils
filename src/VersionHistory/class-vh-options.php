@@ -3,7 +3,7 @@
  * Version History option accessor.
  *
  * @package Dream_Encode\WordPress_Plugin_Utils\VersionHistory
- * @since   [NEXT_VERSION]
+ * @since   1.10.0
  */
 
 declare( strict_types = 1 );
@@ -19,14 +19,14 @@ defined( 'ABSPATH' ) || exit;
  * The elected module may run beside base classes from an older copy of the
  * library, so it depends on nothing outside its own namespace.
  *
- * @since [NEXT_VERSION]
+ * @since 1.10.0
  */
 class VH_Options {
 
 	/**
 	 * Option holding the installed schema version.
 	 *
-	 * @since [NEXT_VERSION]
+	 * @since 1.10.0
 	 * @var   string
 	 */
 	public const DB_VERSION = 'de_vh_db_version';
@@ -34,7 +34,7 @@ class VH_Options {
 	/**
 	 * Option holding the GMT timestamp of the first baseline.
 	 *
-	 * @since [NEXT_VERSION]
+	 * @since 1.10.0
 	 * @var   string
 	 */
 	public const BASELINE_GMT = 'de_vh_baseline_gmt';
@@ -42,7 +42,7 @@ class VH_Options {
 	/**
 	 * Option holding the GMT timestamp of the last reconciliation pass.
 	 *
-	 * @since [NEXT_VERSION]
+	 * @since 1.10.0
 	 * @var   string
 	 */
 	public const LAST_RECONCILE_GMT = 'de_vh_last_reconcile_gmt';
@@ -50,7 +50,7 @@ class VH_Options {
 	/**
 	 * Option holding the path and revision of the elected library copy.
 	 *
-	 * @since [NEXT_VERSION]
+	 * @since 1.10.0
 	 * @var   string
 	 */
 	public const OWNER = 'de_vh_owner';
@@ -58,7 +58,7 @@ class VH_Options {
 	/**
 	 * Option holding the module settings array.
 	 *
-	 * @since [NEXT_VERSION]
+	 * @since 1.10.0
 	 * @var   string
 	 */
 	public const SETTINGS = 'de_vh_settings';
@@ -66,7 +66,7 @@ class VH_Options {
 	/**
 	 * Default settings.
 	 *
-	 * @since [NEXT_VERSION]
+	 * @since 1.10.0
 	 * @var   array<string, mixed>
 	 */
 	private const DEFAULTS = array(
@@ -78,7 +78,7 @@ class VH_Options {
 	/**
 	 * In-memory cache of the resolved settings.
 	 *
-	 * @since [NEXT_VERSION]
+	 * @since 1.10.0
 	 * @var   array<string, mixed>|null
 	 */
 	private static ?array $cache = null;
@@ -86,7 +86,7 @@ class VH_Options {
 	/**
 	 * Get all settings merged with defaults.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return array<string, mixed>
 	 */
 	public static function all(): array {
@@ -108,7 +108,7 @@ class VH_Options {
 	/**
 	 * Get a single setting.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @param  string  $key      Setting key.
 	 * @param  mixed   $default  Optional. Value when the key is missing. Default null.
 	 * @return mixed
@@ -126,7 +126,7 @@ class VH_Options {
 	/**
 	 * Set a single setting.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @param  string  $key    Setting key.
 	 * @param  mixed   $value  Setting value.
 	 * @return bool
@@ -144,7 +144,7 @@ class VH_Options {
 	/**
 	 * Clear the in-memory settings cache.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return void
 	 */
 	public static function refresh(): void {
@@ -154,7 +154,7 @@ class VH_Options {
 	/**
 	 * Get the GMT timestamp at which this site began recording history.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return string Empty string when no baseline has been recorded.
 	 */
 	public static function baseline_gmt(): string {

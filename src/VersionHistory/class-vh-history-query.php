@@ -3,7 +3,7 @@
  * Version History reconstruction queries.
  *
  * @package Dream_Encode\WordPress_Plugin_Utils\VersionHistory
- * @since   [NEXT_VERSION]
+ * @since   1.10.0
  */
 
 declare( strict_types = 1 );
@@ -21,14 +21,14 @@ defined( 'ABSPATH' ) || exit;
  * so plainly when there is none. Nothing here extrapolates backwards from the
  * baseline: state before the baseline is unknown, not assumed.
  *
- * @since [NEXT_VERSION]
+ * @since 1.10.0
  */
 class VH_History_Query {
 
 	/**
 	 * Reconstruct the software state at a GMT timestamp.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @param  string  $gmt  GMT timestamp in MySQL format.
 	 * @return array<string, mixed>
 	 */
@@ -64,7 +64,7 @@ class VH_History_Query {
 	/**
 	 * Reconstruct the state of a single component at a GMT timestamp.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @param  string  $type  Component type.
 	 * @param  string  $file  Component file.
 	 * @param  string  $gmt   GMT timestamp in MySQL format.
@@ -89,7 +89,7 @@ class VH_History_Query {
 	/**
 	 * Apply one event to a reconstructed state map.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @param  array<string, array<string, mixed>>  $state  State map.
 	 * @param  stdClass  $event  Event row.
 	 * @return array<string, array<string, mixed>>
@@ -140,7 +140,7 @@ class VH_History_Query {
 	 * inside the same second, and replaying them out of order lands on the
 	 * wrong version.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @param  string  $after   Exclusive lower bound. Empty string for no lower bound.
 	 * @param  string  $until   Inclusive upper bound.
 	 * @return array<int, stdClass>
@@ -182,7 +182,7 @@ class VH_History_Query {
 	/**
 	 * Get the complete event history for one component, oldest first.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @param  string       $type    Component type.
 	 * @param  string       $file    Component file.
 	 * @param  string|null  $before  Optional. Inclusive GMT upper bound.
@@ -228,7 +228,7 @@ class VH_History_Query {
 	 * Accepts either a directory slug or a full plugin basename, so
 	 * `woocommerce` and `woocommerce/woocommerce.php` both work.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @param  string  $type        Component type.
 	 * @param  string  $identifier  Slug or file.
 	 * @return string|null
@@ -258,7 +258,7 @@ class VH_History_Query {
 	/**
 	 * Get every current state row for this site.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @param  bool  $present_only  Optional. Exclude components no longer on disk. Default true.
 	 * @return array<int, stdClass>
 	 */
@@ -291,7 +291,7 @@ class VH_History_Query {
 	/**
 	 * Count recorded events for this site.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return int
 	 */
 	public static function count_events(): int {

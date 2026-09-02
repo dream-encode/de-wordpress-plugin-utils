@@ -3,7 +3,7 @@
  * Version History source detector.
  *
  * @package Dream_Encode\WordPress_Plugin_Utils\VersionHistory
- * @since   [NEXT_VERSION]
+ * @since   1.10.0
  */
 
 declare( strict_types = 1 );
@@ -18,14 +18,14 @@ defined( 'ABSPATH' ) || exit;
  * Attributes an event to the context that produced it. When the context cannot
  * be established the answer is `unknown`. Nothing here guesses.
  *
- * @since [NEXT_VERSION]
+ * @since 1.10.0
  */
 class VH_Source_Detector {
 
 	/**
 	 * Source to report regardless of context.
 	 *
-	 * @since [NEXT_VERSION]
+	 * @since 1.10.0
 	 * @var   string
 	 */
 	private static string $forced = '';
@@ -33,7 +33,7 @@ class VH_Source_Detector {
 	/**
 	 * Whether this request is running WordPress automatic updates.
 	 *
-	 * @since [NEXT_VERSION]
+	 * @since 1.10.0
 	 * @var   bool
 	 */
 	private static bool $automatic_update = false;
@@ -41,7 +41,7 @@ class VH_Source_Detector {
 	/**
 	 * Determine the source of the change being recorded.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return string
 	 */
 	public static function detect(): string {
@@ -73,7 +73,7 @@ class VH_Source_Detector {
 	 *
 	 * Used by the reconciler, which knows exactly what it is.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @param  string  $source  Source to report.
 	 * @return void
 	 */
@@ -84,7 +84,7 @@ class VH_Source_Detector {
 	/**
 	 * Stop forcing a source.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return void
 	 */
 	public static function release(): void {
@@ -94,7 +94,7 @@ class VH_Source_Detector {
 	/**
 	 * Flag this request as a WordPress automatic update.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return void
 	 */
 	public static function mark_automatic_update(): void {

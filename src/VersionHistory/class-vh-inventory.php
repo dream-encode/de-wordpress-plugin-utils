@@ -3,7 +3,7 @@
  * Version History inventory reader.
  *
  * @package Dream_Encode\WordPress_Plugin_Utils\VersionHistory
- * @since   [NEXT_VERSION]
+ * @since   1.10.0
  */
 
 declare( strict_types = 1 );
@@ -30,14 +30,14 @@ defined( 'ABSPATH' ) || exit;
  *         'metadata'       => array(),
  *     )
  *
- * @since [NEXT_VERSION]
+ * @since 1.10.0
  */
 class VH_Inventory {
 
 	/**
 	 * Get the complete current inventory, keyed by type and file.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return array<string, array<string, mixed>>
 	 */
 	public static function snapshot(): array {
@@ -61,7 +61,7 @@ class VH_Inventory {
 	/**
 	 * Build the map key for a component.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @param  string  $type  Component type.
 	 * @param  string  $file  Component file.
 	 * @return string
@@ -73,7 +73,7 @@ class VH_Inventory {
 	/**
 	 * Get WordPress core as a single component.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return array<int, array<string, mixed>>
 	 */
 	public static function core(): array {
@@ -95,7 +95,7 @@ class VH_Inventory {
 	/**
 	 * Get every installed plugin.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return array<int, array<string, mixed>>
 	 */
 	public static function plugins(): array {
@@ -123,7 +123,7 @@ class VH_Inventory {
 	 *
 	 * Must-use plugins are always loaded, so their status is always active.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return array<int, array<string, mixed>>
 	 */
 	public static function mu_plugins(): array {
@@ -153,7 +153,7 @@ class VH_Inventory {
 	 * file mtime stand in for one. A hash change is what makes a drop-in look
 	 * like a version change during reconciliation.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return array<int, array<string, mixed>>
 	 */
 	public static function dropins(): array {
@@ -197,7 +197,7 @@ class VH_Inventory {
 	/**
 	 * Get every installed theme.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return array<int, array<string, mixed>>
 	 */
 	public static function themes(): array {
@@ -234,7 +234,7 @@ class VH_Inventory {
 	 *
 	 * A network-active plugin must never read as inactive on an individual site.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @param  string  $file  Plugin basename.
 	 * @return string
 	 */
@@ -255,7 +255,7 @@ class VH_Inventory {
 	/**
 	 * Derive a directory slug from a plugin or drop-in file path.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @param  string  $file  File path relative to its container directory.
 	 * @return string
 	 */
@@ -275,7 +275,7 @@ class VH_Inventory {
 	 * Version values are stored exactly as reported. Nothing here assumes they
 	 * are valid semantic versions.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @param  string  $version  Raw version string.
 	 * @return string|null
 	 */
@@ -292,7 +292,7 @@ class VH_Inventory {
 	/**
 	 * Load the admin plugin API on front-end and cron requests.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return void
 	 */
 	private static function load_plugin_api(): void {

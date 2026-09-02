@@ -3,7 +3,7 @@
  * Version History module.
  *
  * @package Dream_Encode\WordPress_Plugin_Utils\VersionHistory
- * @since   [NEXT_VERSION]
+ * @since   1.10.0
  */
 
 declare( strict_types = 1 );
@@ -23,7 +23,7 @@ defined( 'ABSPATH' ) || exit;
  * from an older copy of the library that won the include-time race, so it
  * depends on nothing outside its own namespace.
  *
- * @since [NEXT_VERSION]
+ * @since 1.10.0
  */
 class Version_History {
 
@@ -33,7 +33,7 @@ class Version_History {
 	 * Kept in step with the value registered in the library bootstrap, which is
 	 * what the election compares.
 	 *
-	 * @since [NEXT_VERSION]
+	 * @since 1.10.0
 	 * @var   int
 	 */
 	public const MODULE_REVISION = 1;
@@ -41,7 +41,7 @@ class Version_History {
 	/**
 	 * Singleton instance.
 	 *
-	 * @since [NEXT_VERSION]
+	 * @since 1.10.0
 	 * @var   self|null
 	 */
 	private static ?self $instance = null;
@@ -49,7 +49,7 @@ class Version_History {
 	/**
 	 * Whether init has already run this request.
 	 *
-	 * @since [NEXT_VERSION]
+	 * @since 1.10.0
 	 * @var   bool
 	 */
 	private bool $initialized = false;
@@ -57,7 +57,7 @@ class Version_History {
 	/**
 	 * Get the singleton instance.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return self
 	 */
 	public static function instance(): self {
@@ -74,7 +74,7 @@ class Version_History {
 	 * Installs the schema when it is missing or behind, records the baseline the
 	 * first time it runs, and stamps which copy of the library is recording.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return void
 	 */
 	public function init(): void {
@@ -98,7 +98,7 @@ class Version_History {
 	/**
 	 * Whether this site has recorded a baseline yet.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return bool
 	 */
 	public function has_baseline(): bool {
@@ -108,7 +108,7 @@ class Version_History {
 	/**
 	 * Get a status summary for the admin screen and CLI.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return array<string, mixed>
 	 */
 	public function status(): array {
@@ -130,7 +130,7 @@ class Version_History {
 	/**
 	 * Record the baseline once, the first time the module runs on a site.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return void
 	 */
 	private function maybe_record_baseline(): void {
@@ -147,7 +147,7 @@ class Version_History {
 	 * Purely diagnostic, and the first thing worth checking when recording
 	 * looks stale.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return void
 	 */
 	private function record_owner(): void {

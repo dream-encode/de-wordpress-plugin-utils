@@ -3,7 +3,7 @@
  * Version History schema installer.
  *
  * @package Dream_Encode\WordPress_Plugin_Utils\VersionHistory
- * @since   [NEXT_VERSION]
+ * @since   1.10.0
  */
 
 declare( strict_types = 1 );
@@ -19,14 +19,14 @@ defined( 'ABSPATH' ) || exit;
  * prefixed `de_vh_` rather than per-plugin: there is one ledger per site, and it
  * has to outlive whichever plugin happens to be carrying the library.
  *
- * @since [NEXT_VERSION]
+ * @since 1.10.0
  */
 class VH_Installer {
 
 	/**
 	 * Current schema version.
 	 *
-	 * @since [NEXT_VERSION]
+	 * @since 1.10.0
 	 * @var   int
 	 */
 	public const DB_VERSION = 1;
@@ -34,7 +34,7 @@ class VH_Installer {
 	/**
 	 * Get the events table name.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return string
 	 */
 	public static function events_table(): string {
@@ -46,7 +46,7 @@ class VH_Installer {
 	/**
 	 * Get the current state table name.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return string
 	 */
 	public static function current_state_table(): string {
@@ -58,7 +58,7 @@ class VH_Installer {
 	/**
 	 * Get the checkpoints table name.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return string
 	 */
 	public static function checkpoints_table(): string {
@@ -70,7 +70,7 @@ class VH_Installer {
 	/**
 	 * Install or upgrade the schema when the stored version is behind.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return bool Whether the schema was touched.
 	 */
 	public static function maybe_install(): bool {
@@ -88,7 +88,7 @@ class VH_Installer {
 	/**
 	 * Run dbDelta against the schema and record the version.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return void
 	 */
 	public static function install(): void {
@@ -102,7 +102,7 @@ class VH_Installer {
 	/**
 	 * Whether every ledger table exists.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return bool
 	 */
 	public static function tables_exist(): bool {
@@ -122,7 +122,7 @@ class VH_Installer {
 	/**
 	 * Get the ledger table names.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return array<string, string>
 	 */
 	public static function get_tables(): array {
@@ -139,7 +139,7 @@ class VH_Installer {
 	 * Index prefix lengths are capped at 150 because these are utf8mb4 columns
 	 * and the composite keys have to stay inside the InnoDB key length limit.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return string
 	 */
 	public static function get_schema(): string {

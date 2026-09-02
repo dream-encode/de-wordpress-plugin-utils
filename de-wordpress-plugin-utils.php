@@ -27,7 +27,7 @@ if ( ! function_exists( 'de_wpu_elect_version_history_copy' ) ) {
 	 * The highest module revision wins. Copies registering an equal revision are
 	 * interchangeable, so the first one registered is kept.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @param  array<string, int>  $registry  Map of library path to module revision.
 	 * @return string Elected library path, or an empty string when nothing registered.
 	 */
@@ -57,7 +57,7 @@ if ( ! function_exists( 'de_wpu_boot_version_history' ) ) {
 	 * election. The library version is rewritten on every release and would make
 	 * unrelated releases fight over the module.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return void
 	 */
 	function de_wpu_boot_version_history() {
@@ -86,7 +86,7 @@ if ( defined( 'DE_WORDPRESS_PLUGIN_UTILS_VERSION' ) ) {
 	return;
 }
 
-define( 'DE_WORDPRESS_PLUGIN_UTILS_VERSION', '1.9.5' );
+define( 'DE_WORDPRESS_PLUGIN_UTILS_VERSION', '1.10.0' );
 define( 'DE_WORDPRESS_PLUGIN_UTILS_PATH', __DIR__ );
 
 require_once DE_WORDPRESS_PLUGIN_UTILS_PATH . '/src/Common/class-functions.php';

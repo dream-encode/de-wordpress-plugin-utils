@@ -3,7 +3,7 @@
  * Version History checkpoints.
  *
  * @package Dream_Encode\WordPress_Plugin_Utils\VersionHistory
- * @since   [NEXT_VERSION]
+ * @since   1.10.0
  */
 
 declare( strict_types = 1 );
@@ -24,14 +24,14 @@ defined( 'ABSPATH' ) || exit;
  * The events table remains the authoritative record. A checkpoint is only ever
  * an optimisation, and is always derivable from the events that precede it.
  *
- * @since [NEXT_VERSION]
+ * @since 1.10.0
  */
 class VH_Checkpoints {
 
 	/**
 	 * Create a checkpoint from the current state table.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @param  string       $reason  Optional. Why the checkpoint was taken. Default 'scheduled'.
 	 * @param  string|null  $gmt     Optional. GMT timestamp to stamp it with. Default now.
 	 * @return int Checkpoint ID, or 0 on failure.
@@ -65,7 +65,7 @@ class VH_Checkpoints {
 	/**
 	 * Get the most recent checkpoint at or before a GMT timestamp.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @param  string  $gmt  GMT timestamp.
 	 * @return stdClass|null
 	 */
@@ -95,7 +95,7 @@ class VH_Checkpoints {
 	/**
 	 * Count the checkpoints recorded for this site.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return int
 	 */
 	public static function count(): int {
@@ -113,7 +113,7 @@ class VH_Checkpoints {
 	/**
 	 * Decode a checkpoint's stored state.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @param  stdClass  $checkpoint  Checkpoint row.
 	 * @return array<string, array<string, mixed>>
 	 */
@@ -130,7 +130,7 @@ class VH_Checkpoints {
 	/**
 	 * Build a checkpoint payload from the current state table.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return array<string, array<string, mixed>>
 	 */
 	private static function build_state(): array {

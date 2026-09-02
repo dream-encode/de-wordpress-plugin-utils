@@ -3,7 +3,7 @@
  * Version History event recorder.
  *
  * @package Dream_Encode\WordPress_Plugin_Utils\VersionHistory
- * @since   [NEXT_VERSION]
+ * @since   1.10.0
  */
 
 declare( strict_types = 1 );
@@ -22,14 +22,14 @@ defined( 'ABSPATH' ) || exit;
  * current state table into step, which is what makes reconciliation cheap and
  * keeps it from re-reporting a change that was already captured by a hook.
  *
- * @since [NEXT_VERSION]
+ * @since 1.10.0
  */
 class VH_Event_Recorder {
 
 	/**
 	 * Record an event and bring current state into step.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @param  array<string, mixed>  $args  Event arguments.
 	 * @return bool Whether a new event row was written.
 	 */
@@ -67,7 +67,7 @@ class VH_Event_Recorder {
 	 * The baseline timestamp becomes the earliest moment this site can answer
 	 * for. Nothing before it is knowable, and nothing here pretends otherwise.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return int Number of components recorded.
 	 */
 	public static function record_baseline(): int {
@@ -102,7 +102,7 @@ class VH_Event_Recorder {
 	/**
 	 * Write or update the current state row for a component.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @param  array<string, mixed>  $event    Normalized event.
 	 * @param  bool                  $present  Optional. Whether the component is still on disk. Default true.
 	 * @return void
@@ -150,7 +150,7 @@ class VH_Event_Recorder {
 	 * The row is kept so the last known version survives deletion. That history
 	 * is one of the reasons this ledger exists.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @param  string  $type  Component type.
 	 * @param  string  $file  Component file.
 	 * @return void
@@ -177,7 +177,7 @@ class VH_Event_Recorder {
 	/**
 	 * Get the current state row for a component.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @param  string  $type  Component type.
 	 * @param  string  $file  Component file.
 	 * @return stdClass|null
@@ -209,7 +209,7 @@ class VH_Event_Recorder {
 	 * same-day reconciliation of the identical transition into one row, while
 	 * still allowing the same transition to legitimately recur on a later date.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @param  array<string, mixed>  $event  Normalized event.
 	 * @return string
 	 */
@@ -235,7 +235,7 @@ class VH_Event_Recorder {
 	/**
 	 * Whether an event with this fingerprint has already been recorded.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @param  string  $fingerprint  Event fingerprint.
 	 * @return bool
 	 */
@@ -260,7 +260,7 @@ class VH_Event_Recorder {
 	 * software without a WordPress user, and the ledger records that honestly
 	 * rather than attributing the change to nobody in particular.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @return int|null
 	 */
 	private static function current_user_id(): ?int {
@@ -276,7 +276,7 @@ class VH_Event_Recorder {
 	/**
 	 * Fill in defaults and derived values for an event.
 	 *
-	 * @since  [NEXT_VERSION]
+	 * @since  1.10.0
 	 * @param  array<string, mixed>  $args  Raw event arguments.
 	 * @return array<string, mixed>
 	 */
