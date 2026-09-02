@@ -52,4 +52,5 @@ require_once __DIR__ . '/Fixtures/class-test-rest-controller.php';
 require_once __DIR__ . '/Fixtures/class-test-plugin.php';
 require_once __DIR__ . '/Fixtures/class-test-data-migrator.php';
 require_once __DIR__ . '/Fixtures/class-test-background-processor.php';
+require_once __DIR__ . '/Fixtures/class-version-history-fixture.php';
 
