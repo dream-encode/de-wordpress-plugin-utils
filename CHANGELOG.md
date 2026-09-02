@@ -1,7 +1,13 @@
 # Changelog
 
 ## [NEXT_VERSION] - [UNRELEASED]
-* BUG: Example fix description.
+* FEA: Version History - New `src/VersionHistory/` module recording a permanent history of WordPress core, plugin, must-use plugin, drop-in and theme versions for the site.
+* FEA: Version History - `VH_Installer` creates three site-wide tables, `de_vh_events`, `de_vh_current_state` and `de_vh_checkpoints`.
+* FEA: Version History - `VH_History_Query::state_at()` reconstructs the software state at any timestamp from the nearest checkpoint plus subsequent events, and reports state before the baseline as unknown rather than extrapolating.
+* FEA: Version History - `VH_Event_Recorder` writes immutable events and keeps `de_vh_current_state` in step, with a `UNIQUE` day-granularity fingerprint so a hook-recorded change and a same-day reconciliation collapse into one row.
+* FEA: Version History - `VH_Inventory` reads core, plugins, must-use plugins, drop-ins and themes through WordPress APIs, hashing drop-ins that carry no version header.
+* ENH: Bootstrap - Additive module election. Every copy of the library registers its module revision before the existing early return, and the highest revision loads `src/VersionHistory/` on `plugins_loaded`. The existing `require_once` chain is unchanged, so base classes keep loading at include time exactly as before.
+* TSK: Tests - Add coverage for historical reconstruction, boundary seconds, delete and reinstall, duplicate prevention, fingerprint granularity and the module election.
 
 ## [1.9.5] - 2026-05-26
 * BUG: Background Processor - Try to fix elapsed time again.

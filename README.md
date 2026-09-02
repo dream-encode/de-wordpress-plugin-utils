@@ -323,6 +323,39 @@ All methods are static.
 
 ---
 
+## Version History
+
+`Dream_Encode\WordPress_Plugin_Utils\VersionHistory\`
+
+Permanent history of WordPress core, plugin, must-use plugin, drop-in and theme versions for a
+site. Answers questions like "what version of WooCommerce was installed on July 15" from recorded
+evidence, and says the state is unknown when there is none.
+
+**You do not wire this up.** It boots itself. Every copy of this library registers its module
+revision at include time, and on `plugins_loaded` the highest revision loads the module and records
+the baseline the first time it runs. One ledger per site, three shared tables (`de_vh_events`,
+`de_vh_current_state`, `de_vh_checkpoints`), regardless of how many plugins bundle the library.
+
+The election is additive. It does not change how the base classes above load, which is still
+first-copy-wins at include time. The module is deliberately self-contained and depends on nothing
+outside its own namespace, so it stays correct when the elected copy is newer than the copy that
+declared the base classes.
+
+**Key classes:**
+- `Version_History` — singleton. `instance()`, `init()`, `has_baseline()`, `status()`.
+- `VH_History_Query` — `state_at( $gmt )`, `component_at()`, `component_history()`,
+  `resolve_component()`, `current_state()`, `count_events()`.
+- `VH_Event_Recorder` — `record()`, `record_baseline()`, `mark_absent()`, `fingerprint()`.
+- `VH_Inventory` — `snapshot()` plus per-type readers.
+- `VH_Checkpoints` — `create()`, `latest_before()`, `decode()`.
+- `VH_Installer` — `maybe_install()`, `get_schema()`, table name accessors.
+- `VH_Options` — module options and settings.
+
+`state_at()` returns `known => false` for any timestamp before the baseline. Nothing extrapolates
+backwards, and events are never rewritten.
+
+---
+
 ## Development
 
 ```bash
