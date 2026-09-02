@@ -1,5 +1,8 @@
 # Changelog
 
+## [NEXT_VERSION] - [UNRELEASED]
+* BUG: Example fix description.
+
 ## [1.10.0] - 2026-09-02
 * FEA: Version History - New `src/VersionHistory/` module recording a permanent history of WordPress core, plugin, must-use plugin, drop-in and theme versions for the site.
 * FEA: Version History - `VH_Installer` creates three site-wide tables, `de_vh_events`, `de_vh_current_state` and `de_vh_checkpoints`.
